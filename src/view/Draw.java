@@ -254,7 +254,7 @@ public class Draw extends JFrame {
 		gbc_cbxShapes.gridx = 0;
 		gbc_cbxShapes.gridy = 4;
 
-		cbxShapes.setModel(new DefaultComboBoxModel(new String[] {"Choose shape", "Point", "Line", "Square", "Rectangle", "Circle"}));
+		cbxShapes.setModel(new DefaultComboBoxModel(new String[] {"Choose shape", "Point", "Line", "Square", "Rectangle", "Circle", "Hexagon"}));
 		pnlSever.add(cbxShapes, gbc_cbxShapes);
 
 		controler.setListeners(this);

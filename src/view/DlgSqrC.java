@@ -114,7 +114,7 @@ public class DlgSqrC extends JDialog {
 			}
 		}
 	}
-	
+
 	public Square getSquare(){
 		return square;
 	}
