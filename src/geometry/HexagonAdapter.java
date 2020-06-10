@@ -7,6 +7,7 @@ import java.awt.*;
 public class HexagonAdapter extends SurfaceShape implements Shiftable{
     private Point center;
     Hexagon hexagon;
+
     public HexagonAdapter(int x, int y, int radius){
         this.hexagon=new Hexagon(x, y, radius);
         hexagon.setR(radius);
@@ -45,9 +46,36 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
     public void setR(int r) {
         hexagon.setR(r);
     }
+    public double getHeight(){
+        return 0.5*hexagon.getR()*Math.sqrt(3);
+    }
+    public Point getLeftPoint(){
+        return new Point(hexagon.getX()-hexagon.getR(), hexagon.getY());
+    }
+    public Point getLeftBottomPoint(){
+        return new Point(hexagon.getX()-hexagon.getR()/2, hexagon.getY()-(int)getHeight());
+    }
+    public Point getRightBottomPoint(){
+        return new Point(hexagon.getX()+hexagon.getR()/2, hexagon.getY()-(int)getHeight());
+    }
+    public Point getRightPoint(){
+        return new Point(hexagon.getX()+hexagon.getR(), hexagon.getY());
+    }
+    public Point getRightUpPoint(){
+        return new Point(hexagon.getX()+hexagon.getR()/2, hexagon.getY()-(int)getHeight() + 2*(int)getHeight());
+    }
+    public Point getLeftUpPoint(){
+        return new Point(hexagon.getX()-hexagon.getR()/2, hexagon.getY()-(int)getHeight() +2*(int)getHeight());
+    }
     @Override
     public void selected(Graphics g) {
-
+        g.setColor(Color.BLUE);
+        new Line(getLeftPoint(), getLeftUpPoint()).selected(g);
+        new Line(getLeftPoint(), getLeftBottomPoint()).selected(g);
+        new Line(getLeftUpPoint(), getRightUpPoint()).selected(g);
+        new Line(getRightUpPoint(), getRightPoint()).selected(g);
+        new Line(getRightPoint(), getRightBottomPoint()).selected(g);
+        new Line(getRightBottomPoint(), getLeftBottomPoint()).selected(g);
     }
 
     @Override

@@ -586,6 +586,7 @@ public class Controller
 
                     }
                 }
+                draw.getSelectedShapes().clear();
                 draw.getBtnDelete().setEnabled(false);
                 draw.getBtnModify().setEnabled(false);
             }
