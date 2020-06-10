@@ -1,8 +1,11 @@
 package controller;
 
+import command.AddShapeCommand;
+import command.RemoveShapeCommand;
 import geometry.*;
 import geometry.Point;
 import geometry.Rectangle;
+import geometry.Shape;
 import view.*;
 
 import javax.swing.*;
@@ -13,8 +16,19 @@ import java.awt.event.*;
 
 public class Controller
 {
-
-    public void setListeners(Draw draw)
+    Draw draw;
+    public Controller(Draw draw){
+        this.draw = draw;
+    }
+    public void AddShapeAction(Shape shape) {
+        AddShapeCommand addComand= new AddShapeCommand(draw.getModel(), shape);
+        addComand.execute();
+    }
+    public void RemoveShapeAction(Shape shape) {
+        RemoveShapeCommand removeComand= new RemoveShapeCommand(draw.getModel(), shape);
+        removeComand.execute();
+    }
+    public void setListeners()
     {
         draw.addWindowListener(new WindowAdapter() {
 
@@ -65,7 +79,7 @@ public class Controller
                     if (result == JOptionPane.OK_OPTION){
                         for(int i=0;i<draw.getSelectedShapes().size();i++)
                         {
-                            draw.getModel().removeShape(draw.getSelectedShapes().get(i));
+                            RemoveShapeAction(draw.getSelectedShapes().get(i));
                         }
 
                         draw.getSelectedShapes().clear();
@@ -603,8 +617,7 @@ public class Controller
                 String shape = draw.getCbxShapes().getSelectedItem().toString();
 
                 if(shape.equals("Point")) {
-
-                    draw.getModel().addShape(new geometry.Point(draw.getX(),draw.getY(), draw.getBtnColor().getBackground()));
+                    AddShapeAction(new Point(draw.getX(),draw.getY(), draw.getBtnColor().getBackground()));
                 }
 
                 if(shape.equals("Line")){
@@ -614,9 +627,7 @@ public class Controller
                     if(draw.getSecondClick() == 2){
                         draw.setX(e.getX());
                         draw.setY(e.getY());
-
-                        draw.getModel().addShape(new Line(draw.getFirstPoint(), new geometry.Point(draw.getX(),draw.getY()), draw.getBtnColor().getBackground()));
-
+                        AddShapeAction(new Line(draw.getFirstPoint(), new geometry.Point(draw.getX(),draw.getY()), draw.getBtnColor().getBackground()));
                         draw.setSecondClick(0);
 
                     }
@@ -654,7 +665,7 @@ public class Controller
                         circle.setCEdge(draw.getBtnColor().getBackground());
                         circle.setCInside(draw.getBtnColorInside().getBackground());
 
-                        draw.getModel().addShape(circle);
+                        AddShapeAction(circle);
                     }
 
                 }
@@ -686,7 +697,7 @@ public class Controller
                         hexagon.setCEdge(draw.getBtnColor().getBackground());
                         hexagon.setCInside(draw.getBtnColorInside().getBackground());
 
-                        draw.getModel().addShape(hexagon);
+                        AddShapeAction(hexagon);
                     }
 
                 }
@@ -724,7 +735,7 @@ public class Controller
                         square.setCEdge(draw.getBtnColor().getBackground());
                         square.setCInside(draw.getBtnColorInside().getBackground());
 
-                        draw.getModel().addShape(square);
+                        AddShapeAction(square);
                     }
 
                 }
@@ -763,7 +774,7 @@ public class Controller
                         r.setCEdge(draw.getBtnColor().getBackground());
                         r.setCInside(draw.getBtnColorInside().getBackground());
 
-                        draw.getModel().addShape(r);
+                        AddShapeAction(r);
                     }
 
 

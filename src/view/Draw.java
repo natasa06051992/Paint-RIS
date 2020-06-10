@@ -161,7 +161,7 @@ public class Draw extends JFrame {
 	public Draw() {
 		setTitle("RIS");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Controller controler = new Controller();
+		Controller controler = new Controller(this);
 		setBounds(100, 100, 573, 457);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(100, 149, 237));
@@ -257,7 +257,7 @@ public class Draw extends JFrame {
 		cbxShapes.setModel(new DefaultComboBoxModel(new String[] {"Choose shape", "Point", "Line", "Square", "Rectangle", "Circle", "Hexagon"}));
 		pnlSever.add(cbxShapes, gbc_cbxShapes);
 
-		controler.setListeners(this);
+		controler.setListeners();
 	}
 
 }
