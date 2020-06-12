@@ -13,7 +13,15 @@ public class Model extends JPanel {
 	// private int y = 10;
 	private ArrayList<Shape> shapes = new ArrayList<Shape>();
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
-	
+
+	public ArrayList<Shape> getShapes() {
+		return shapes;
+	}
+
+	public ArrayList<Shape> getSelectedShapes() {
+		return selectedShapes;
+	}
+
 	public Model() {
 		super();
 		shapes = new ArrayList<Shape>();
