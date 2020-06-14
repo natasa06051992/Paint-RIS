@@ -1,21 +1,9 @@
 package view;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.*;
 import java.util.ArrayList;
 
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.DefaultListModel;
-import javax.swing.JButton;
-import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTextField;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
@@ -43,7 +31,27 @@ public class Draw extends JFrame {
 	static JButton btnColorInside;*/
 	JButton btnModify;
 	JButton btnDelete;
+	MenuItem Undo;
+	MenuItem Redo;
 
+	public MenuItem getUndo() {
+		return Undo;
+	}
+
+	public void setUndo(MenuItem undo) {
+		Undo = undo;
+	}
+
+	public MenuItem getRedo() {
+		return Redo;
+	}
+
+	public void setRedo(MenuItem redo) {
+		Redo = redo;
+	}
+
+	java.awt.MenuBar menuBar;
+	Menu menuEdit;
 	public void setFirstPoint(Point firstPoint) {
 		this.firstPoint = firstPoint;
 	}
@@ -240,6 +248,8 @@ public class Draw extends JFrame {
 		gbc_btnDelete.gridx = 0;
 		gbc_btnDelete.gridy = 3;
 		pnlSever.add(btnDelete, gbc_btnDelete);
+
+
 		GridBagConstraints gbc_pnlForDraw = new GridBagConstraints();
 		gbc_pnlForDraw.gridheight = 6;
 		gbc_pnlForDraw.fill = GridBagConstraints.BOTH;
@@ -253,6 +263,15 @@ public class Draw extends JFrame {
 		gbc_cbxShapes.fill = GridBagConstraints.HORIZONTAL;
 		gbc_cbxShapes.gridx = 0;
 		gbc_cbxShapes.gridy = 4;
+
+		Undo = new MenuItem("Undo");
+		Redo = new MenuItem("Redo");
+		menuBar = new java.awt.MenuBar();
+		setMenuBar(menuBar);
+		menuEdit = new Menu("Edit");
+		menuBar.add(menuEdit);
+		menuEdit.add(Undo);
+		menuEdit.add(Redo);
 
 		cbxShapes.setModel(new DefaultComboBoxModel(new String[] {"Choose shape", "Point", "Line", "Square", "Rectangle", "Circle", "Hexagon"}));
 		pnlSever.add(cbxShapes, gbc_cbxShapes);

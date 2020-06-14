@@ -17,7 +17,7 @@ public class AddShapeCommand implements ICommand{
     }
 
     @Override
-    public void unexecute() {
+    public void undo() {
         model.removeShape(shape);
     }
 

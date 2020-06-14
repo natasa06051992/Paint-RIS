@@ -29,6 +29,10 @@ public class Line extends Shape{
 		pEnd.setX(pEnd.getX()+poX);
 		pEnd.setY(pEnd.getY()+poY);
 	}
+	public void moveTo(Line line){
+		this.setpStart(line.getpStart());
+		this.setpEnd(line.getpEnd());
+	}
 	public double length(){
 		return pStart.distance(pEnd);
 	}

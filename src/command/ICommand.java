@@ -2,6 +2,6 @@ package command;
 
 public interface ICommand {
     void execute();
-    void unexecute();
+    void undo();
     String getNameOfClass();
 }

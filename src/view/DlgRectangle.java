@@ -18,8 +18,8 @@ import javax.swing.JTextField;
 public class DlgRectangle extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
-	private JTextField width;
-	private JTextField height;
+	private JTextField widthRectangle;
+	private JTextField heightRectangle;
 	public Rectangle rectangle;
 	private Color colorEdge = Color.BLACK;
 
@@ -66,6 +66,22 @@ public class DlgRectangle extends JDialog {
 		}
 	}
 
+	public JTextField getWidthRectangle() {
+		return widthRectangle;
+	}
+
+	public void setWidthRectangle(JTextField widthRectangle) {
+		this.widthRectangle = widthRectangle;
+	}
+
+	public JTextField getHeightRectangle() {
+		return heightRectangle;
+	}
+
+	public void setHeightRectangle(JTextField heightRectangle) {
+		this.heightRectangle = heightRectangle;
+	}
+
 	/**
 	 * Create the dialog.
 	 */
@@ -85,18 +101,18 @@ public class DlgRectangle extends JDialog {
 				panel.add(lblWidth);
 			}
 			{
-				width = new JTextField();
-				width.setColumns(10);
-				panel.add(width);
+				widthRectangle = new JTextField();
+				widthRectangle.setColumns(10);
+				panel.add(widthRectangle);
 			}
 			{
 				JLabel lblHeight = new JLabel("Enter height:");
 				panel.add(lblHeight);
 			}
 			{
-				height = new JTextField();
-				panel.add(height);
-				height.setColumns(10);
+				heightRectangle = new JTextField();
+				panel.add(heightRectangle);
+				heightRectangle.setColumns(10);
 			}
 		}
 		{
