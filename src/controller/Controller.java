@@ -14,14 +14,15 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller
 {
     Draw draw;
     private CommandManager manager;
-
+    public final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public Controller(Draw draw){
-
         this.draw = draw;
         manager = CommandManager.getInstance();
     }
@@ -47,6 +48,7 @@ public class Controller
         @Override
         public void windowClosing(WindowEvent we)
         {
+            logger.log(Level.FINE, "Application is closed.");
             String ObjButtons[] = {"Yes","No"};
             int PromptResult = JOptionPane.showOptionDialog(null,
                     "Do you want to exit?", "Safty question",
@@ -55,6 +57,7 @@ public class Controller
             if(PromptResult==0)
             {
                 System.exit(0);
+                logger.log(Level.FINE, "Application is closed.");
             }
         }});
 

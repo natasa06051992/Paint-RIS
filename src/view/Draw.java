@@ -2,6 +2,8 @@ package view;
 
 import java.awt.*;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -11,6 +13,7 @@ import controller.Controller;
 
 import geometry.Shape;
 import geometry.Point;
+import logging.LogWriter;
 import model.Model;
 
 public class Draw extends JFrame {
@@ -80,6 +83,7 @@ public class Draw extends JFrame {
 				try {
 					Draw frame = new Draw();
 					frame.setVisible(true);
+					LogWriter.setup();
 					frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -157,7 +161,7 @@ public class Draw extends JFrame {
 	public JButton getBtnColorInside() {
 		return btnColorInside;
 	}
-
+	public static Logger logger;
 	public void setSelectedShapes(ArrayList<Shape> selectedShapes) {
 		this.selectedShapes = selectedShapes;
 	}
@@ -168,6 +172,7 @@ public class Draw extends JFrame {
 	 */
 	public Draw() {
 		setTitle("RIS");
+
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Controller controler = new Controller(this);
 		setBounds(100, 100, 573, 457);
