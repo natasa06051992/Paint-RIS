@@ -5,8 +5,8 @@ import java.awt.Graphics;
 
 public abstract class Shape implements Comparable{
 
-	private String colorString = "crna";
-	private  Color color;
+	private String colorString = "black";
+	private  Color color = Color.lightGray;
 	private boolean selected;
 	
 	public Shape(){
@@ -44,8 +44,8 @@ public abstract class Shape implements Comparable{
 		return colorString;
 	}
 
-	public void setColor(String boja) {
-		this.colorString = boja;
+	public void setColor(String color) {
+		this.colorString = color;
 	}
 	public boolean isSelected() {
 		return selected;

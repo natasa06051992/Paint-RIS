@@ -1,0 +1,10 @@
+[2020-06-16 23:51:47] [FINE   ] Command Add Circle :190, 70, 22, -4144960, -4144960 
+[2020-06-16 23:51:56] [FINE   ] Command Modify Circle :190, 70, 33, -52276, -16776961 
+[2020-06-16 23:51:59] [FINE   ] Command Modify Circle :190, 70, 22, -16776961, -4144960 - undo 
+[2020-06-16 23:52:00] [FINE   ] Command Modify Circle :190, 70, 22, -16776961, -4144960 - undo 
+[2020-06-16 23:52:02] [FINE   ] Command Modify Circle :190, 70, 33, -52276, -16776961 - undo 
+[2020-06-16 23:52:04] [FINE   ] Command Modify Circle :190, 70, 33, -52276, -16776961 - undo 
+[2020-06-16 23:52:13] [FINE   ] Command Modify Circle :190, 70, 22, -16776961, -4144960 - undo 
+[2020-06-16 23:52:17] [FINE   ] Command Modify Circle :190, 70, 22, -16776961, -4144960 - undo 
+[2020-06-16 23:52:20] [FINE   ] Command Modify Circle :190, 70, 33, -52276, -16776961 - undo 
+[2020-06-16 23:52:26] [FINE   ] Application is closed. 

@@ -39,6 +39,6 @@ public class ModifyRectangleCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify Rectangle";
+        return "Command Modify Rectangle"+newRectangle.toString();
     }
 }

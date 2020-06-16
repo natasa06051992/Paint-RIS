@@ -3,13 +3,14 @@ package command;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class CommandManager {
     private static CommandManager instance = null;
     private QueueStack<List<ICommand>> queueStackNormal;
     private QueueStack<List<ICommand>> queueStackReverse;
-
-    private List<String> actionHistory;
+    public final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 
     public static CommandManager getInstance(){
         if(instance != null)
@@ -20,13 +21,12 @@ public class CommandManager {
     private CommandManager() {
         queueStackNormal = new QueueStack<>();
         queueStackReverse = new QueueStack<>();
-        actionHistory = new ArrayList<>();
     }
 
     public void execute(List<ICommand> actionList){
         actionList.forEach(ICommand::execute);
         queueStackNormal.push(actionList);
-        actionList.forEach(a -> actionHistory.add(a.getNameOfClass()));
+        actionList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()));
     }
 
     public void undo() {
@@ -34,7 +34,8 @@ public class CommandManager {
         optionalActions.ifPresent(aList -> {
             aList.forEach(ICommand::undo);
             queueStackReverse.push(aList);
-            aList.forEach(a -> actionHistory.add(a.getNameOfClass() + " - undo"));
+
+            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+ " - undo"));
         });
     }
 
@@ -43,7 +44,7 @@ public class CommandManager {
         optionalActions.ifPresent(aList -> {
             aList.forEach(ICommand::execute);
             queueStackNormal.push(aList);
-            aList.forEach(a -> actionHistory.add(a.getNameOfClass() + " - redo"));
+            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+ " - undo"));
         });
     }
 
@@ -55,8 +56,5 @@ public class CommandManager {
         queueStackReverse.clear();
     }
 
-    public List<String> getActionHistory() {
-        return actionHistory;
-    }
 
 }

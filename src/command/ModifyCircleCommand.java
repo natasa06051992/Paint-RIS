@@ -16,28 +16,36 @@ public class ModifyCircleCommand implements ICommand{
     private Circle newCircle;
     private Circle original;
 
-    public ModifyCircleCommand(Model model, Circle circle, Circle newCircle) {
+    public ModifyCircleCommand(Model model, Circle circle, Circle shape) {
         this.model = model;
         this.oldCircle=circle;
-        this.newCircle=newCircle;
+        this.newCircle=shape;
+        original=new Circle();
     }
 
     @Override
     public void execute() {
-        original=oldCircle;
+        original.setR(oldCircle.getR());
+        original.setCenter(oldCircle.getCenter());
+        original.setCEdge(oldCircle.getCEdge());
+        original.setCInside(oldCircle.getCInside());
         oldCircle.setR(newCircle.getR());
         oldCircle.setCenter(newCircle.getCenter());
         oldCircle.setCEdge(newCircle.getCEdge());
         oldCircle.setCInside(newCircle.getCInside());
+
     }
 
     @Override
     public void undo() {
-
+        oldCircle.setR(original.getR());
+        oldCircle.setCenter(original.getCenter());
+        oldCircle.setCEdge(original.getCEdge());
+        oldCircle.setCInside(original.getCInside());
     }
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify Circle";
+        return "Command Modify "+oldCircle.toString();
     }
 }

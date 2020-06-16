@@ -34,6 +34,6 @@ public class ModifyLineCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify Line";
+        return "Command Modify "+newLine.toString();
     }
 }

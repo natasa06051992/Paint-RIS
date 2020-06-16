@@ -1,0 +1,8 @@
+[2020-06-15 23:07:23] [FINE   ] Command Add(207,81) 
+[2020-06-15 23:07:24] [FINE   ] Command Add(149,179) 
+[2020-06-15 23:07:26] [FINE   ] Command Add(298,179) 
+[2020-06-15 23:07:30] [FINE   ] Command AddPoint up left=(136,79), length=11, color of edge=null, color inside=null 
+[2020-06-15 23:07:38] [FINE   ] Command AddCenter=(347,74), radius=11, color of edge=java.awt.Color[r=192,g=192,b=192], inside color=java.awt.Color[r=192,g=192,b=192] 
+[2020-06-15 23:07:50] [FINE   ] Command RemovePoint up left=(136,79), length=11, color of edge=null, color inside=null 
+[2020-06-15 23:07:54] [FINE   ] Command RemovePoint up left=(136,79), length=11, color of edge=null, color inside=null - undo 
+[2020-06-15 23:07:55] [FINE   ] Command RemovePoint up left=(136,79), length=11, color of edge=null, color inside=null - undo 

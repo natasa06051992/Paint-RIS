@@ -165,7 +165,7 @@ public class Draw extends JFrame {
 	public void setSelectedShapes(ArrayList<Shape> selectedShapes) {
 		this.selectedShapes = selectedShapes;
 	}
-	final JButton btnColor;
+	final JButton btnColor ;
 	final JButton btnColorInside;
 	/**
 	 * Create the frame.

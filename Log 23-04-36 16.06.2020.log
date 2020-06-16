@@ -1,0 +1,16 @@
+[2020-06-16 23:04:51] [FINE   ] Command Add Square :Point :135, 133, 22, null, null 
+[2020-06-16 23:04:54] [FINE   ] Command Add Square :Point :304, 91, 22, null, null 
+[2020-06-16 23:05:03] [FINE   ] Command Add Circle :388, 265, , 44, java.awt.Color[r=192,g=192,b=192], java.awt.Color[r=192,g=192,b=192] 
+[2020-06-16 23:05:18] [FINE   ] Command Add Point :130, 240 
+[2020-06-16 23:05:22] [FINE   ] Command Add Point :170, 31 
+[2020-06-16 23:05:25] [FINE   ] Command Add Point :230, 178 
+[2020-06-16 23:05:26] [FINE   ] Command Add Point :216, 123 
+[2020-06-16 23:05:27] [FINE   ] Command Add Point :216, 123 
+[2020-06-16 23:05:35] [FINE   ] Command Add Point :221, 261 
+[2020-06-16 23:05:36] [FINE   ] Command Add Point :294, 225 
+[2020-06-16 23:05:45] [FINE   ] Command Add Circle :406, 105, , 22, java.awt.Color[r=255,g=204,b=153], java.awt.Color[r=0,g=153,b=153] 
+[2020-06-16 23:06:17] [FINE   ] Command Add Hexagon :Point :83, 44, 3, java.awt.Color[r=255,g=204,b=153], java.awt.Color[r=0,g=153,b=153] 
+[2020-06-16 23:06:26] [FINE   ] Command Remove Circle :406, 105, , 22, java.awt.Color[r=255,g=204,b=153], java.awt.Color[r=0,g=153,b=153] 
+[2020-06-16 23:06:31] [FINE   ] Command Modify CircleCircle :388, 265, , 44, java.awt.Color[r=255,g=102,b=102], java.awt.Color[r=192,g=192,b=192] 
+[2020-06-16 23:06:42] [FINE   ] Command Add Circle :39, 142, , 22, java.awt.Color[r=255,g=102,b=102], java.awt.Color[r=192,g=192,b=192] 
+[2020-06-16 23:06:53] [FINE   ] Command Add Circle :78, 88, , 0, java.awt.Color[r=255,g=102,b=102], java.awt.Color[r=192,g=192,b=192] 

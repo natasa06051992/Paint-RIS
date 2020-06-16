@@ -37,6 +37,6 @@ public class ModifySquareCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify Square";
+        return "Command Modify "+newSquare.toString();
     }
 }

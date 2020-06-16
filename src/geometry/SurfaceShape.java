@@ -7,8 +7,8 @@ public abstract class SurfaceShape extends Shape{
 	private String colorInside;// = "bela";
 	private String colorEdge; //= "crna";
 	
-	private Color cEdge;
-	private Color cInside;
+	private Color cEdge = Color.LIGHT_GRAY;
+	private Color cInside= Color.LIGHT_GRAY;
 	
 	public abstract void fill(Graphics g);
 
@@ -36,12 +36,12 @@ public abstract class SurfaceShape extends Shape{
 		return cInside;
 	}
 
-	public void setCEdge(Color cIvice) {
-		this.cEdge = cIvice;
+	public void setCEdge(Color cEdge) {
+		this.cEdge = cEdge;
 	}
 
-	public void setCInside(Color cUnutra) {
-		this.cInside = cUnutra;
+	public void setCInside(Color cInside) {
+		this.cInside = cInside;
 	}
 	
 }

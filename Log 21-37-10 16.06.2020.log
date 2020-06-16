@@ -1,0 +1,9 @@
+[2020-06-16 21:37:23] [FINE   ] Command Add Point :116, 113 
+[2020-06-16 21:37:23] [FINE   ] Command Add Point :207, 133 
+[2020-06-16 21:37:25] [FINE   ] Command Add Line :Point :271, 106, Point :271, 106, java.awt.Color[r=192,g=192,b=192] 
+[2020-06-16 21:37:29] [FINE   ] Command Add Line :Point :139, 199, Point :139, 199, java.awt.Color[r=192,g=192,b=192] 
+[2020-06-16 21:37:41] [FINE   ] Command Add Square :Point :295, 189, 2, null, null 
+[2020-06-16 21:38:06] [FINE   ] Command Add Square :Point :356, 96, 33, null, null 
+[2020-06-16 21:38:09] [FINE   ] Command Add Square :Point :356, 96, 33, null, null - undo 
+[2020-06-16 21:38:10] [FINE   ] Command Add Square :Point :356, 96, 33, null, null - undo 
+[2020-06-16 21:38:24] [FINE   ] Command Remove Square :Point :356, 96, 33, null, null 

@@ -38,7 +38,7 @@ public class Line extends Shape{
 	}
 
 	public String toString(){
-		return pStart+"-->"+pEnd+", color= "+getcColor();
+		return "Line :"+pStart.getX()+", "+pStart.getY()+", "+pEnd.getX()+", "+pEnd.getY()+", "+getcColor().getRGB();
 	}
 
 	public boolean equals(Object obj){

@@ -23,6 +23,6 @@ public class AddShapeCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Add";
+        return "Command Add "+shape.toString();
     }
 }

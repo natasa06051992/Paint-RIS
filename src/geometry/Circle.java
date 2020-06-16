@@ -37,9 +37,9 @@ public class Circle extends SurfaceShape implements Shiftable{
 	public double girth(){
 		return 2 * r * Math.PI;
 	}
-	// Centar=(xCentra, yCentra), poluprecnik=r
+
 	public String toString(){
-		return "Center="+center+", radius="+r+", color of edge="+getCEdge()+", inside color="+getCInside();
+		return "Circle :"+center.getX()+", "+center.getY()+", "+r+", "+getCEdge().getRGB()+", "+getCInside().getRGB();
 	}
 
 	public boolean equals(Object obj) {

@@ -46,7 +46,7 @@ public class Point extends Shape implements Shiftable{
 
 	// (x,y)
 	public String toString(){
-		return "("+x+","+y+")";
+		return "Point :"+x+", "+y+", "+getcColor().getRGB();
 	}
 
 	public boolean equals(Object obj){

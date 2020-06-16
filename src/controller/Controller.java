@@ -35,8 +35,8 @@ public class Controller
     public void RemoveShapeAction(ArrayList<Shape> shapes) {
         List<ICommand> actionList = new ArrayList<>();
         for (var shape:shapes) {
-            RemoveShapeCommand removeComand= new RemoveShapeCommand(draw.getModel(), shape);
-            actionList.add(removeComand);
+            RemoveShapeCommand removeCommand= new RemoveShapeCommand(draw.getModel(), shape);
+            actionList.add(removeCommand);
         }
 
         manager.execute(actionList);
@@ -48,7 +48,7 @@ public class Controller
         @Override
         public void windowClosing(WindowEvent we)
         {
-            logger.log(Level.FINE, "Application is closed.");
+
             String ObjButtons[] = {"Yes","No"};
             int PromptResult = JOptionPane.showOptionDialog(null,
                     "Do you want to exit?", "Safty question",
@@ -56,8 +56,8 @@ public class Controller
                     ObjButtons,ObjButtons[1]);
             if(PromptResult==0)
             {
-                System.exit(0);
                 logger.log(Level.FINE, "Application is closed.");
+                System.exit(0);
             }
         }});
 
@@ -559,34 +559,15 @@ public class Controller
                     JTextField centerY = new JTextField();
                     JTextField R = new JTextField();
 
-                    centerX.setText(String.valueOf(((Circle) draw.getSelectedShape()).getCenter().getX()));
-                    centerY.setText(String.valueOf(((Circle) draw.getSelectedShape()).getCenter().getY()));
-                    R.setText(String.valueOf(((Circle) draw.getSelectedShape()).getR()));
+                    centerX.setText(String.valueOf(circle.getCenter().getX()));
+                    centerY.setText(String.valueOf(circle.getCenter().getY()));
+                    R.setText(String.valueOf(circle.getR()));
 
                     Color edge = circle.getCEdge();
                     Color inside = circle.getCInside();
 
                     JColorChooser ccEdgeCircle = new JColorChooser();
-                    ccEdgeCircle.setColor(((Circle)draw.getSelectedShape()).getCEdge());
-
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccEdgeCircle.getColor();
-                            ((Circle)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccEdgeCircle.getSelectionModel().addChangeListener(changeListener);
-
                     JColorChooser ccInsideCircle = new JColorChooser();
-                    ccInsideCircle.setColor(((Circle)draw.getSelectedShape()).getCEdge());
-
-                    ChangeListener changeL = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccInsideCircle.getColor();
-                            ((Circle)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccInsideCircle.getSelectionModel().addChangeListener(changeL);
 
                     final JComponent[] inputs = new JComponent[]{
                             new JLabel("X coordinate of center: "),
@@ -645,6 +626,7 @@ public class Controller
                 actionList.add(cmd);
                 manager.execute(actionList);
                 draw.getSelectedShapes().clear();
+                draw.getBtnDelete().setEnabled(false);
                 draw.getBtnDelete().setEnabled(false);
                 draw.getBtnModify().setEnabled(false);
             }

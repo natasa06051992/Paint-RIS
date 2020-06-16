@@ -26,8 +26,8 @@ public class LogWriter {
 
         fileHandler = new FileHandler("Log " + dateString +".log");
 
-        // create a TXT formatter
-        System.setProperty("java.util.logging.SimpleFormatter.format", "%2$s: %5$s%6$s%n");
+        //System.setProperty("java.util.logging.SimpleFormatter.format", "%2$s: %5$s%6$s%n");
+        System.setProperty("java.util.logging.SimpleFormatter.format", "[%1$tF %1$tT] [%4$-7s] %5$s %n");
         formatterTxt = new SimpleFormatter();
 
         fileHandler.setFormatter(formatterTxt);
