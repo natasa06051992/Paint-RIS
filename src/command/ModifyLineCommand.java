@@ -23,13 +23,19 @@ public class ModifyLineCommand implements ICommand{
 
     @Override
     public void execute() {
-        original=oldLine;
-        oldLine.moveTo(newLine);
+        original.setpEnd(oldLine.getpEnd());
+        original.setpStart(oldLine.getpStart());
+        original.setcColor(oldLine.getcColor());
+        oldLine.setpEnd(newLine.getpEnd());
+        oldLine.setpStart(newLine.getpStart());
+        oldLine.setcColor(newLine.getcColor());
     }
 
     @Override
     public void undo() {
-
+        oldLine.setpEnd(original.getpEnd());
+        oldLine.setpStart(original.getpStart());
+        oldLine.setcColor(original.getcColor());
     }
 
     @Override

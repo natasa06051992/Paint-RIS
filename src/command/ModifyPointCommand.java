@@ -23,13 +23,20 @@ public class ModifyPointCommand implements ICommand{
 
     @Override
     public void execute() {
-        original=oldPoint;
-        oldPoint.moveTo(newPoint.getX(), newPoint.getY());
+        original.setX(oldPoint.getX());
+        original.setY(oldPoint.getY());
+        original.setcColor(oldPoint.getcColor());
+
+        oldPoint.setX(newPoint.getX());
+        oldPoint.setY(newPoint.getY());
+        oldPoint.setcColor(newPoint.getcColor());
     }
 
     @Override
     public void undo() {
-
+        oldPoint.setX(original.getX());
+        oldPoint.setY(original.getY());
+        oldPoint.setcColor(original.getcColor());
     }
 
     @Override

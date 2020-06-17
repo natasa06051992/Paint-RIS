@@ -474,24 +474,7 @@ public class Controller
                     JColorChooser ccEdgeHexagon = new JColorChooser();
                     ccEdgeHexagon.setColor(((HexagonAdapter)draw.getSelectedShape()).getCEdge());
 
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccEdgeHexagon.getColor();
-                            ((HexagonAdapter)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccEdgeHexagon.getSelectionModel().addChangeListener(changeListener);
-
                     JColorChooser ccInsideHexagon = new JColorChooser();
-                    ccInsideHexagon.setColor(((HexagonAdapter)draw.getSelectedShape()).getCEdge());
-
-                    ChangeListener changeL = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccInsideHexagon.getColor();
-                            ((HexagonAdapter)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccInsideHexagon.getSelectionModel().addChangeListener(changeL);
 
                     final JComponent[] inputs = new JComponent[]{
                             new JLabel("X coordinate of center: "),
@@ -521,11 +504,11 @@ public class Controller
                     );
                     if (result == JOptionPane.OK_OPTION) {
                         try{
-                            hexagon.getCenter().setX(Integer.parseInt(centerX.getText()));
-                            hexagon.getCenter().setY(Integer.parseInt(centerY.getText()));
-                            hexagon.setR(Integer.parseInt(R.getText()));
-                            hexagon.setCEdge(ccEdgeHexagon.getColor());
-                            hexagon.setCInside(ccInsideHexagon.getColor());
+                            //    hexagon.getCenter().setX(Integer.parseInt(centerX.getText()));
+                            //    hexagon.getCenter().setY(Integer.parseInt(centerY.getText()));
+                            //    hexagon.setR(Integer.parseInt(R.getText()));
+                            //    hexagon.setCEdge(ccEdgeHexagon.getColor());
+                         //   hexagon.setCInside(ccInsideHexagon.getColor());
                             draw.getSelectedShape().setSelected(false);
 
                             draw.getBtnColor().setBackground(ccEdgeHexagon.getColor());

@@ -15,9 +15,8 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
         hexagon.setY(y);
         this.center=new Point(x, y);
     }
-    public HexagonAdapter(Hexagon hexagon){
-        this.hexagon=hexagon;
-        this.center=new Point(hexagon.getX(), hexagon.getY());
+    public HexagonAdapter(){
+        hexagon=new Hexagon(1,1,1);
     }
 
     public HexagonAdapter(Point point, int radius, Color colorEdge, Color colorInside) {
@@ -26,8 +25,8 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
         hexagon.setX(point.getX());
         hexagon.setY(point.getY());
         this.center=point;
-        hexagon.setBorderColor(colorEdge);
-        hexagon.setAreaColor(colorInside);
+        setCEdge(colorEdge);
+        setCInside(colorInside);
     }
 
     @Override
@@ -49,6 +48,12 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
         hexagon.setAreaColor(color);
     }
 
+    public void setHexagon(Hexagon hexagon){
+        this.hexagon=hexagon;
+    }
+    public Hexagon getHexagon(){
+        return hexagon;
+    }
     public void setBorderColor(Color color){
         hexagon.setBorderColor(color);
     }

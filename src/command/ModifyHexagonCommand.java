@@ -20,24 +20,33 @@ public class ModifyHexagonCommand implements ICommand{
         this.model =model;
         this.oldHexagon=hexagon;
         this.newHexagon=newHexagon;
+        original = new HexagonAdapter();
     }
 
     @Override
     public void execute() {
-        original=oldHexagon;
+
+        original.setR(oldHexagon.getR());
+        original.setCenter(oldHexagon.getCenter());
+        original.setCEdge(oldHexagon.getCEdge());
+        original.setCInside(oldHexagon.getCInside());
+
         oldHexagon.setR(newHexagon.getR());
         oldHexagon.setCenter(newHexagon.getCenter());
-        oldHexagon.setBorderColor(newHexagon.getCEdge());
-        oldHexagon.setAreaColor(newHexagon.getCInside());
+        oldHexagon.setCEdge(newHexagon.getCEdge());
+        oldHexagon.setCInside(newHexagon.getCInside());
     }
 
     @Override
     public void undo() {
-
+        oldHexagon.setR(original.getR());
+        oldHexagon.setCenter(original.getCenter());
+        oldHexagon.setCEdge(original.getCEdge());
+        oldHexagon.setCInside(original.getCInside());
     }
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+newHexagon.toString();
+        return "Command Modify "+oldHexagon.toString();
     }
 }

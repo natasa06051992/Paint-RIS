@@ -1,0 +1,5 @@
+[2020-06-17 21:49:47] [FINE   ] Command Add Hexagon :239, 124, 22, -4144960, -4144960 
+[2020-06-17 21:49:54] [FINE   ] Command Modify Hexagon :239, 124, 11, -4144960, -4144960 
+[2020-06-17 21:49:57] [FINE   ] Command Modify Hexagon :239, 124, 22, -4144960, -4144960 - undo 
+[2020-06-17 21:50:00] [FINE   ] Command Modify Hexagon :239, 124, 11, -4144960, -4144960 - undo 
+[2020-06-17 21:50:06] [FINE   ] Application is closed. 

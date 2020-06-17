@@ -24,7 +24,12 @@ public class ModifyRectangleCommand implements ICommand{
 
     @Override
     public void execute() {
-        original=oldRectangle;
+        original.setHeight(oldRectangle.getHeight());
+        original.setSideLength(oldRectangle.getSideLength());
+        original.setUpLeft(oldRectangle.getUpLeft());
+        original.setCInside(oldRectangle.getCInside());
+        original.setCEdge(oldRectangle.getCEdge());
+
         oldRectangle.setHeight(newRectangle.getHeight());
         oldRectangle.setSideLength(newRectangle.getSideLength());
         oldRectangle.setUpLeft(newRectangle.getUpLeft());
@@ -34,7 +39,11 @@ public class ModifyRectangleCommand implements ICommand{
 
     @Override
     public void undo() {
-
+        oldRectangle.setHeight(original.getHeight());
+        oldRectangle.setSideLength(original.getSideLength());
+        oldRectangle.setUpLeft(original.getUpLeft());
+        oldRectangle.setCInside(original.getCInside());
+        oldRectangle.setCEdge(original.getCEdge());
     }
 
     @Override

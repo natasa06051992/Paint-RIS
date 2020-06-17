@@ -35,7 +35,7 @@ public class CommandManager {
             aList.forEach(ICommand::undo);
             queueStackReverse.push(aList);
 
-            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+ " - undo"));
+            aList.forEach(a ->logger.log(Level.FINE, "Undo "+a.getNameOfClass()));
         });
     }
 
@@ -44,7 +44,7 @@ public class CommandManager {
         optionalActions.ifPresent(aList -> {
             aList.forEach(ICommand::execute);
             queueStackNormal.push(aList);
-            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+ " - undo"));
+            aList.forEach(a ->logger.log(Level.FINE, "Redo "+ a.getNameOfClass()));
         });
     }
 

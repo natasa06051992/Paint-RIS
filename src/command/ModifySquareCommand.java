@@ -23,7 +23,11 @@ public class ModifySquareCommand implements ICommand{
 
     @Override
     public void execute() {
-        original = oldSquare;
+        original.setUpLeft(oldSquare.getUpLeft());
+        original.setSideLength(oldSquare.getSideLength());
+        original.setCEdge(oldSquare.getCEdge());
+        original.setCInside(oldSquare.getCInside());
+
         oldSquare.setUpLeft(newSquare.getUpLeft());
         oldSquare.setSideLength(newSquare.getSideLength());
         oldSquare.setCEdge(newSquare.getCEdge());
@@ -32,7 +36,10 @@ public class ModifySquareCommand implements ICommand{
 
     @Override
     public void undo() {
-
+        oldSquare.setUpLeft(original.getUpLeft());
+        oldSquare.setSideLength(original.getSideLength());
+        oldSquare.setCEdge(original.getCEdge());
+        oldSquare.setCInside(original.getCInside());
     }
 
     @Override

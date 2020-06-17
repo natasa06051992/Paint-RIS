@@ -1,0 +1,7 @@
+[2020-06-17 21:42:50] [FINE   ] Command Add Hexagon :275, 157, 22, -4144960, -4144960 
+[2020-06-17 21:43:02] [FINE   ] Command Modify Hexagon :275, 157, 33, -13369549, -16737793 
+[2020-06-17 21:43:06] [FINE   ] Command Modify Hexagon :275, 157, 33, -13369549, -16737793 - undo 
+[2020-06-17 21:43:07] [FINE   ] Command Add Hexagon :275, 157, 33, -13369549, -16737793 - undo 
+[2020-06-17 21:43:09] [FINE   ] Command Add Hexagon :275, 157, 33, -13369549, -16737793 - undo 
+[2020-06-17 21:43:10] [FINE   ] Command Modify Hexagon :275, 157, 33, -13369549, -16737793 - undo 
+[2020-06-17 21:44:47] [FINE   ] Application is closed. 
