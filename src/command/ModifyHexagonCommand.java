@@ -15,6 +15,7 @@ public class ModifyHexagonCommand implements ICommand{
     private HexagonAdapter original;
     private HexagonAdapter newHexagon;
     private HexagonAdapter oldHexagon;
+    private HexagonAdapter fromHexagon;
 
     public ModifyHexagonCommand(Model model, HexagonAdapter hexagon, HexagonAdapter newHexagon) {
         this.model =model;
@@ -30,7 +31,7 @@ public class ModifyHexagonCommand implements ICommand{
         original.setCenter(oldHexagon.getCenter());
         original.setCEdge(oldHexagon.getCEdge());
         original.setCInside(oldHexagon.getCInside());
-
+        fromHexagon = original;
         oldHexagon.setR(newHexagon.getR());
         oldHexagon.setCenter(newHexagon.getCenter());
         oldHexagon.setCEdge(newHexagon.getCEdge());
@@ -39,6 +40,7 @@ public class ModifyHexagonCommand implements ICommand{
 
     @Override
     public void undo() {
+        fromHexagon=newHexagon;
         oldHexagon.setR(original.getR());
         oldHexagon.setCenter(original.getCenter());
         oldHexagon.setCEdge(original.getCEdge());
@@ -47,6 +49,6 @@ public class ModifyHexagonCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+oldHexagon.toString();
+        return "Command Modify "+ newHexagon.toString()+"->"+oldHexagon.toString();
     }
 }

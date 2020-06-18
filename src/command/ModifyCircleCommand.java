@@ -15,6 +15,7 @@ public class ModifyCircleCommand implements ICommand{
     private Circle oldCircle;
     private Circle newCircle;
     private Circle original;
+    private Circle fromShape;
 
     public ModifyCircleCommand(Model model, Circle circle, Circle shape) {
         this.model = model;
@@ -33,11 +34,13 @@ public class ModifyCircleCommand implements ICommand{
         oldCircle.setCenter(newCircle.getCenter());
         oldCircle.setCEdge(newCircle.getCEdge());
         oldCircle.setCInside(newCircle.getCInside());
+        fromShape= original;
 
     }
 
     @Override
     public void undo() {
+        fromShape = newCircle;
         oldCircle.setR(original.getR());
         oldCircle.setCenter(original.getCenter());
         oldCircle.setCEdge(original.getCEdge());
@@ -46,6 +49,6 @@ public class ModifyCircleCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+oldCircle.toString();
+        return "Command Modify "+ fromShape.toString() + "->"+oldCircle.toString();
     }
 }

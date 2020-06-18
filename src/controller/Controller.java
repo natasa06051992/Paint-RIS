@@ -31,6 +31,7 @@ public class Controller
         List<ICommand> actionList = new ArrayList<>();
         actionList.add(addComand);
         manager.execute(actionList);
+        draw.getTxtInfo().append(addComand.getNameOfClass() +'\n');
     }
     public void RemoveShapeAction(ArrayList<Shape> shapes) {
         List<ICommand> actionList = new ArrayList<>();
@@ -38,8 +39,10 @@ public class Controller
             RemoveShapeCommand removeCommand= new RemoveShapeCommand(draw.getModel(), shape);
             actionList.add(removeCommand);
         }
-
         manager.execute(actionList);
+        for (var action:actionList) {
+            draw.getTxtInfo().append(action.getNameOfClass() +'\n');
+        }
     }
     public void setListeners()
     {
@@ -135,15 +138,8 @@ public class Controller
                     newY.setText(String.valueOf(((geometry.Point) draw.getSelectedShape()).getY()));
 
                     JColorChooser ccColorPoint = new JColorChooser();
-                    ccColorPoint.setColor(draw.getSelectedShape().getcColor());
 
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccColorPoint.getColor();
-                            draw.getSelectedShape().setcColor(newColor);
-                        }
-                    };
-                    ccColorPoint.getSelectionModel().addChangeListener(changeListener);
+
 
                     final JComponent[] input = new JComponent[]{
                             new JLabel("X coordinate point: "),
@@ -201,15 +197,6 @@ public class Controller
                     endY.setText(String.valueOf(((Line) draw.getSelectedShape()).getpEnd().getY()));
 
                     JColorChooser ccColorLine = new JColorChooser();
-                    ccColorLine.setColor(draw.getSelectedShape().getcColor());
-
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccColorLine.getColor();
-                            draw.getSelectedShape().setcColor(newColor);
-                        }
-                    };
-                    ccColorLine.getSelectionModel().addChangeListener(changeListener);
 
                     final JComponent[] input = new JComponent[]{
                             new JLabel("X coordinate starting point: "),
@@ -282,15 +269,7 @@ public class Controller
                     Color inside = square.getCInside();
 
                     JColorChooser ccEdgeSquare = new JColorChooser();
-                    ccEdgeSquare.setColor(((Square)draw.getSelectedShape()).getCEdge());
 
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccEdgeSquare.getColor();
-                            ((Square)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccEdgeSquare.getSelectionModel().addChangeListener(changeListener);
 
                     JColorChooser ccInside = new JColorChooser();
                     ccInside.setColor(((Square)draw.getSelectedShape()).getCInside());
@@ -374,26 +353,8 @@ public class Controller
                     Color inside = rectangle.getCInside();
 
                     JColorChooser ccEdgeRghtAngle = new JColorChooser();
-                    ccEdgeRghtAngle.setColor(((geometry.Rectangle)draw.getSelectedShape()).getCEdge());
-
-                    ChangeListener changeListener = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccEdgeRghtAngle.getColor();
-                            ((geometry.Rectangle)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccEdgeRghtAngle.getSelectionModel().addChangeListener(changeListener);
 
                     JColorChooser ccInsideRightAngle = new JColorChooser();
-                    ccInsideRightAngle.setColor(((geometry.Rectangle)draw.getSelectedShape()).getCEdge());
-
-                    ChangeListener changeL = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccInsideRightAngle.getColor();
-                            ((Rectangle)draw.getSelectedShape()).setCEdge(newColor);
-                        }
-                    };
-                    ccInsideRightAngle.getSelectionModel().addChangeListener(changeL);
 
                     final JComponent[] inputs = new JComponent[]{
                             new JLabel("X coordinate point up left: "),
@@ -608,6 +569,7 @@ public class Controller
                 }
                 actionList.add(cmd);
                 manager.execute(actionList);
+                draw.getTxtInfo().append(cmd.getNameOfClass() +'\n');
                 draw.getSelectedShapes().clear();
                 draw.getBtnDelete().setEnabled(false);
                 draw.getBtnDelete().setEnabled(false);
@@ -690,7 +652,8 @@ public class Controller
                     dlgHexagon.getBtnSubmit().addActionListener(new ActionListener() {
                         public void actionPerformed(ActionEvent e) {
                             try {
-                                dlgHexagon.setHexagon(new HexagonAdapter(draw.getX(), draw.getY(), Integer.parseInt(dlgHexagon.getRadius().getText())));
+                                var radius = Integer.parseInt(dlgHexagon.getRadius().getText());
+                                dlgHexagon.setHexagon(new HexagonAdapter(draw.getX(), draw.getY(), radius));
                                 dlgHexagon.dispose();
                             } catch (NumberFormatException e1) {
                                 e1.printStackTrace();

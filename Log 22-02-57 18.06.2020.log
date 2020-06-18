@@ -1,0 +1,17 @@
+[2020-06-18 22:03:00] [FINE   ] Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:07] [FINE   ] Command Modify Point :193, 69, -4144960->Point :193, 69, -6684826 
+[2020-06-18 22:03:11] [FINE   ] Undo Command Modify Point :193, 69, -6684826->Point :193, 69, -6684826 
+[2020-06-18 22:03:13] [FINE   ] Undo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:14] [FINE   ] Redo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:15] [FINE   ] Redo Command Modify Point :193, 69, -4144960->Point :193, 69, -6684826 
+[2020-06-18 22:03:28] [FINE   ] Undo Command Modify Point :193, 69, -6684826->Point :193, 69, -6684826 
+[2020-06-18 22:03:34] [FINE   ] Command Add Square :263, 195, 22, -4144960, -4144960 
+[2020-06-18 22:03:36] [FINE   ] Redo Command Modify Point :193, 69, -4144960->Point :193, 69, -6684826 
+[2020-06-18 22:03:39] [FINE   ] Undo Command Modify Point :193, 69, -6684826->Point :193, 69, -6684826 
+[2020-06-18 22:03:41] [FINE   ] Undo Command Add Square :263, 195, 22, -4144960, -4144960 
+[2020-06-18 22:03:42] [FINE   ] Undo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:44] [FINE   ] Redo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:45] [FINE   ] Undo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:46] [FINE   ] Redo Command Add Point :193, 69, -4144960 
+[2020-06-18 22:03:48] [FINE   ] Redo Command Add Square :263, 195, 22, -4144960, -4144960 
+[2020-06-18 22:03:51] [FINE   ] Application is closed. 

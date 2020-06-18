@@ -18,6 +18,18 @@ import model.Model;
 
 public class Draw extends JFrame {
 
+	private final Menu menuFile;
+	private final MenuItem OpenLog;
+
+	public JTextArea getTxtInfo() {
+		return txtInfo;
+	}
+
+	public void setTxtInfo(JTextArea txtInfo) {
+		this.txtInfo = txtInfo;
+	}
+
+	private JTextArea txtInfo;
 	private JPanel contentPane;
 	public static DefaultListModel dlm = new DefaultListModel();
 	private int x;
@@ -234,8 +246,11 @@ public class Draw extends JFrame {
 		pnlSever.add(scrollPane, gbc_scrollPane);
 
 		selectedShapeText = new JTextField();
-		scrollPane.setViewportView(selectedShapeText);
-		selectedShapeText.setColumns(10);
+		txtInfo = new JTextArea();
+		txtInfo.setEditable(false);
+		txtInfo.setColumns(12);
+		txtInfo.setText("");
+		scrollPane.setViewportView(txtInfo);
 		GridBagConstraints gbc_btnModify = new GridBagConstraints();
 		gbc_btnModify.fill = GridBagConstraints.HORIZONTAL;
 		gbc_btnModify.insets = new Insets(0, 0, 5, 5);
@@ -271,8 +286,12 @@ public class Draw extends JFrame {
 
 		Undo = new MenuItem("Undo");
 		Redo = new MenuItem("Redo");
+		OpenLog = new MenuItem("Open log");
 		menuBar = new java.awt.MenuBar();
 		setMenuBar(menuBar);
+		menuFile = new Menu("File");
+		menuBar.add(menuFile);
+		menuFile.add(OpenLog);
 		menuEdit = new Menu("Edit");
 		menuBar.add(menuEdit);
 		menuEdit.add(Undo);

@@ -15,11 +15,13 @@ public class ModifyRectangleCommand implements ICommand{
     Rectangle newRectangle;
     Rectangle oldRectangle;
     Rectangle original;
+    Rectangle from;
 
     public ModifyRectangleCommand(Model model, Rectangle rectangle, Rectangle newRectangle) {
         this.model=model;
         oldRectangle = rectangle;
         this.newRectangle=newRectangle;
+        original = new Rectangle();
     }
 
     @Override
@@ -35,6 +37,7 @@ public class ModifyRectangleCommand implements ICommand{
         oldRectangle.setUpLeft(newRectangle.getUpLeft());
         oldRectangle.setCInside(newRectangle.getCInside());
         oldRectangle.setCEdge(newRectangle.getCEdge());
+        from= original;
     }
 
     @Override
@@ -44,10 +47,11 @@ public class ModifyRectangleCommand implements ICommand{
         oldRectangle.setUpLeft(original.getUpLeft());
         oldRectangle.setCInside(original.getCInside());
         oldRectangle.setCEdge(original.getCEdge());
+        from = newRectangle;
     }
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify Rectangle"+newRectangle.toString();
+        return "Command Modify "+from.toString()+"->"+oldRectangle.toString();
     }
 }

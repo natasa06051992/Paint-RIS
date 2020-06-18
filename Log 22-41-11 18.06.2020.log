@@ -1,0 +1,10 @@
+[2020-06-18 22:41:18] [FINE   ] Command Add Point :189, 101, -4144960 
+[2020-06-18 22:41:20] [FINE   ] Command Add Point :119, 172, -4144960 
+[2020-06-18 22:41:21] [FINE   ] Command Add Point :270, 156, -4144960 
+[2020-06-18 22:41:21] [FINE   ] Command Add Point :107, 113, -4144960 
+[2020-06-18 22:41:21] [FINE   ] Command Add Point :80, 79, -4144960 
+[2020-06-18 22:41:27] [FINE   ] Command Add Point :290, 209, -4144960 
+[2020-06-18 22:41:27] [FINE   ] Command Add Point :152, 196, -4144960 
+[2020-06-18 22:41:37] [FINE   ] Command Add Rectangle :312, 65, 22, 22, -4144960, -4144960 
+[2020-06-18 22:41:48] [FINE   ] Command Modify RectangleRectangle :312, 65, 22, 22, -3355648, -16763905->Rectangle :312, 65, 22, 22, -3355648, -16763905 
+[2020-06-18 22:41:56] [FINE   ] Application is closed. 

@@ -15,10 +15,13 @@ public class ModifySquareCommand implements ICommand{
     private Square original;
     private Square oldSquare;
     private Square newSquare;
+    private Square from;
+
     public ModifySquareCommand(Model model, Square oldSquare, Square newSquare) {
         this.model = model;
         this.oldSquare=oldSquare;
         this.newSquare=newSquare;
+        original = new Square();
     }
 
     @Override
@@ -32,6 +35,7 @@ public class ModifySquareCommand implements ICommand{
         oldSquare.setSideLength(newSquare.getSideLength());
         oldSquare.setCEdge(newSquare.getCEdge());
         oldSquare.setCInside(newSquare.getCInside());
+        from= original;
     }
 
     @Override
@@ -40,10 +44,11 @@ public class ModifySquareCommand implements ICommand{
         oldSquare.setSideLength(original.getSideLength());
         oldSquare.setCEdge(original.getCEdge());
         oldSquare.setCInside(original.getCInside());
+        from = newSquare;
     }
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+newSquare.toString();
+        return "Command Modify "+from.toString()+"->"+newSquare.toString();
     }
 }

@@ -15,10 +15,12 @@ public class ModifyLineCommand implements ICommand{
     private Line original;
     private Line oldLine;
     private Line newLine;
+    private Line fromLine;
     public ModifyLineCommand(Model model, Line oldLine, Line newLine) {
         this.model=model;
         this.oldLine=oldLine;
         this.newLine=newLine;
+        original = new Line();
     }
 
     @Override
@@ -29,10 +31,12 @@ public class ModifyLineCommand implements ICommand{
         oldLine.setpEnd(newLine.getpEnd());
         oldLine.setpStart(newLine.getpStart());
         oldLine.setcColor(newLine.getcColor());
+        fromLine = original;
     }
 
     @Override
     public void undo() {
+        fromLine= newLine;
         oldLine.setpEnd(original.getpEnd());
         oldLine.setpStart(original.getpStart());
         oldLine.setcColor(original.getcColor());
@@ -40,6 +44,6 @@ public class ModifyLineCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+newLine.toString();
+        return "Command Modify "+fromLine +"->"+oldLine.toString();
     }
 }
