@@ -128,7 +128,7 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
             return 0;
     }
     public String toString(){
-        return "Hexagon :"+center.getX()+", "+center.getY()+", "+getR()+", "+getCEdge().getRGB()+", "+getCInside().getRGB();
+        return "Hexagon "+center.getX()+" "+center.getY()+" "+getR()+" "+getCEdge().getRGB()+" "+getCInside().getRGB();
     }
     public double area(){
         return 1.5 * hexagon.getR() * hexagon.getR() * Math.sqrt(3);

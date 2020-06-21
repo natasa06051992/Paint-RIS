@@ -21,6 +21,10 @@ public class Draw extends JFrame {
 	private final Menu menuFile;
 	private final MenuItem OpenLog;
 
+	public MenuItem getOpenLog() {
+		return OpenLog;
+	}
+
 	public JTextArea getTxtInfo() {
 		return txtInfo;
 	}

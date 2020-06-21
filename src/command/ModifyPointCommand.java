@@ -46,6 +46,6 @@ public class ModifyPointCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+fromPoint.toString() +"->"+newPoint.toString();
+        return "Command Modify "+fromPoint.toString() +" -> "+newPoint.toString();
     }
 }

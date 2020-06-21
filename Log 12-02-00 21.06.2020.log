@@ -1,0 +1,11 @@
+[2020-06-21 12:02:21] [FINE   ] Command Add Point 317 78 -6697729 
+[2020-06-21 12:02:21] [FINE   ] Command Add Point 64 103 -6697729 
+[2020-06-21 12:02:21] [FINE   ] Command Add Line 109 189 214 68 -10092442 
+[2020-06-21 12:02:21] [FINE   ] Command Add Square 387 215 22 -10092442 -4144960 
+[2020-06-21 12:02:21] [FINE   ] Command Add Rectangle 151 231 22 11 -10092442 -13421569 
+[2020-06-21 12:02:21] [FINE   ] Command Add Circle 322 130 33 -10092442 -13421569 
+[2020-06-21 12:02:21] [FINE   ] Command Add Hexagon 269 277 11 -10092442 -13421569 
+[2020-06-21 12:02:21] [FINE   ] Command Remove Hexagon 269 277 11 -10092442 -13421569 
+[2020-06-21 12:02:21] [FINE   ] Command Remove Point 64 103 -6697729 
+[2020-06-21 12:02:21] [FINE   ] Command Remove Square 387 215 22 -10092442 -4144960 
+[2020-06-21 12:02:31] [FINE   ] Application is closed. 

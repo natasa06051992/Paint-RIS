@@ -1,0 +1,9 @@
+[2020-06-21 16:00:36] [FINE   ] Command Add Square 189 118 22 -4144960 -4144960 
+[2020-06-21 16:01:30] [FINE   ] Command Add Circle 125 210 22 -4144960 -4144960 
+[2020-06-21 16:01:36] [FINE   ] Command Add Circle 174 135 33 -4144960 -4144960 
+[2020-06-21 16:01:49] [FINE   ] Command Add Circle 125 208 55 -13210 -4144960 
+[2020-06-21 16:01:59] [FINE   ] Command Add Circle 125 208 55 -13210 -4144960 Undo 
+[2020-06-21 16:02:00] [FINE   ] Command Add Circle 174 135 33 -4144960 -4144960 Undo 
+[2020-06-21 16:02:01] [FINE   ] Command Add Circle 125 210 22 -4144960 -4144960 Undo 
+[2020-06-21 16:02:06] [FINE   ] Command Add Circle 202 130 33 -13210 -154 
+[2020-06-21 16:07:31] [FINE   ] Application is closed. 

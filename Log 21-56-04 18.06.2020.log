@@ -1,4 +1,0 @@
-[2020-06-18 21:56:09] [FINE   ] Command Add Square :223, 133, 22, -4144960, -4144960 
-[2020-06-18 21:56:32] [FINE   ] Undo Command Add Square :223, 133, 22, -4144960, -52327 
-[2020-06-18 21:56:34] [FINE   ] Redo Command Add Square :223, 133, 22, -4144960, -52327 
-[2020-06-18 21:56:37] [FINE   ] Application is closed. 

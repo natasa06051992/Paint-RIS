@@ -1,5 +1,7 @@
 package command;
 
+import view.Draw;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -27,6 +29,10 @@ public class CommandManager {
         actionList.forEach(ICommand::execute);
         queueStackNormal.push(actionList);
         actionList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()));
+
+        for (var action:actionList) {
+            draw.getTxtInfo().append(action.getNameOfClass()+'\n');
+        }
     }
 
     public void undo() {
@@ -34,8 +40,10 @@ public class CommandManager {
         optionalActions.ifPresent(aList -> {
             aList.forEach(ICommand::undo);
             queueStackReverse.push(aList);
-
-            aList.forEach(a ->logger.log(Level.FINE, "Undo "+a.getNameOfClass()));
+            for (var action:aList) {
+                draw.getTxtInfo().append(action.getNameOfClass()+" Undo" +'\n');
+            }
+            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+" Undo" ));
         });
     }
 
@@ -44,7 +52,11 @@ public class CommandManager {
         optionalActions.ifPresent(aList -> {
             aList.forEach(ICommand::execute);
             queueStackNormal.push(aList);
-            aList.forEach(a ->logger.log(Level.FINE, "Redo "+ a.getNameOfClass()));
+            aList.forEach(a ->logger.log(Level.FINE, a.getNameOfClass()+" Redo"));
+
+            for (var action:aList) {
+                draw.getTxtInfo().append(action.getNameOfClass()+" Redo" +'\n');
+            }
         });
     }
 
@@ -56,5 +68,8 @@ public class CommandManager {
         queueStackReverse.clear();
     }
 
-
+    Draw draw;
+    public void setDraw(Draw draw) {
+        this.draw=draw;
+    }
 }

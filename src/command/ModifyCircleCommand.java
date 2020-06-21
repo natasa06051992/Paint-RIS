@@ -49,6 +49,6 @@ public class ModifyCircleCommand implements ICommand{
 
     @Override
     public String getNameOfClass() {
-        return "Command Modify "+ fromShape.toString() + "->"+oldCircle.toString();
+        return "Command Modify "+ fromShape.toString() + " -> "+oldCircle.toString();
     }
 }

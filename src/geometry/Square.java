@@ -46,7 +46,7 @@ public class Square extends SurfaceShape implements Shiftable{
 	// Point gore levo=(xGoreLevo,yGoreLevo)
 	// , duzina stranice=sideLength
 	public String toString() {
-		return "Square :"+upLeft.getX()+", "+upLeft.getY() +", "+ sideLength+ ", "+getCEdge().getRGB()+", "+getCInside().getRGB();
+		return "Square "+upLeft.getX()+" "+upLeft.getY() +" "+ sideLength+ " "+getCEdge().getRGB()+" "+getCInside().getRGB();
 	}
 
 	public boolean equals(Object o1) {

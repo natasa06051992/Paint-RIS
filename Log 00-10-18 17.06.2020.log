@@ -1,7 +1,0 @@
-[2020-06-17 00:10:25] [FINE   ] Command Add Circle :239, 145, 22, -4144960, -4144960 
-[2020-06-17 00:10:33] [FINE   ] Command Modify Circle :239, 145, 22, -3342490, -16724737 
-[2020-06-17 00:10:36] [FINE   ] Command Modify Circle :239, 145, 22, -3342490, -16724737 - undo 
-[2020-06-17 00:10:38] [FINE   ] Command Add Circle :239, 145, 22, -16724737, -4144960 - undo 
-[2020-06-17 00:10:41] [FINE   ] Command Add Circle :239, 145, 22, -16724737, -4144960 - undo 
-[2020-06-17 00:10:43] [FINE   ] Command Modify Circle :239, 145, 22, -3342490, -16724737 - undo 
-[2020-06-17 00:10:45] [FINE   ] Application is closed. 

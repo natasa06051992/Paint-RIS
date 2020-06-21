@@ -39,7 +39,7 @@ public class Circle extends SurfaceShape implements Shiftable{
 	}
 
 	public String toString(){
-		return "Circle :"+center.getX()+", "+center.getY()+", "+r+", "+getCEdge().getRGB()+", "+getCInside().getRGB();
+		return "Circle "+center.getX()+" "+center.getY()+" "+r+" "+getCEdge().getRGB()+" "+getCInside().getRGB();
 	}
 
 	public boolean equals(Object obj) {

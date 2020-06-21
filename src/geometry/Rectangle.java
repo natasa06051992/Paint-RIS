@@ -36,7 +36,7 @@ public class Rectangle extends Square{
 	// Point gore levo=(xGoreLevo,yGoreLevo)
 	// , sirina=sirina, height=height
 	public String toString(){
-		return "Rectangle :"+upLeft.getX()+", "+upLeft.getY()+", "+sideLength+", "+height+", "+getCEdge().getRGB()+", "+getCInside().getRGB();
+		return "Rectangle "+upLeft.getX()+" "+upLeft.getY()+" "+sideLength+" "+height+" "+getCEdge().getRGB()+" "+getCInside().getRGB();
 	}
 	public boolean equals(Object obj) {
 		if (obj instanceof Rectangle) {

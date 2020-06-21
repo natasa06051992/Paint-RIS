@@ -1,0 +1,5 @@
+[2020-06-21 14:18:31] [FINE   ] Command Add Point 96 93 -4144960 
+[2020-06-21 14:18:38] [FINE   ] Command Add Line 184 164 331 113 -52429 
+[2020-06-21 14:18:59] [FINE   ] Command Add Square 332 261 22 -52429 -16750951 
+[2020-06-21 14:20:22] [FINE   ] Command Modify Square 332 261 22 -52429 -16751002 -> Square 332 261 22 -65332 -16751002 
+[2020-06-21 14:21:43] [FINE   ] Command Modify Square 332 261 22 -65332 -256 -> Square 332 261 22 -154 -256 

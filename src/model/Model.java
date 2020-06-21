@@ -37,7 +37,14 @@ public class Model extends JPanel {
 		shapes.remove(o);
 		repaint();
 	}
-
+	public void deselectAllShapes(){
+		for (int i =shapes.size()-1;i>=0;i--){
+			if(shapes.get(i).isSelected()){
+				shapes.get(i).setSelected(false);
+				selectedShapes.remove(shapes.get(i));
+			}
+		}
+	}
 	public ArrayList<Shape> findSelected(int x, int y) 
 	{
 		for (int i = shapes.size() - 1; i >= 0; i--) 

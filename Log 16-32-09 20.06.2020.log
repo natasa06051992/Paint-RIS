@@ -1,0 +1,7 @@
+[2020-06-20 16:32:15] [FINE   ] Command Add Hexagon 89 132 33 -4144960 -4144960 
+[2020-06-20 16:32:25] [FINE   ] Command Add Circle 354 108 21 -10027162 -3381505 
+[2020-06-20 16:32:29] [FINE   ] Undo Command Add Circle 354 108 21 -10027162 -3381505 
+[2020-06-20 16:32:31] [FINE   ] Redo Command Add Circle 354 108 21 -10027162 -3381505 
+[2020-06-20 16:32:33] [FINE   ] Undo Command Add Circle 354 108 21 -10027162 -3381505 
+[2020-06-20 16:32:38] [FINE   ] Redo Command Add Circle 354 108 21 -10027162 -3381505 
+[2020-06-20 16:32:40] [FINE   ] Application is closed. 

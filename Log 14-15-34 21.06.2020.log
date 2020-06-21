@@ -1,0 +1,7 @@
+[2020-06-21 14:15:40] [FINE   ] Command Add Point 123 84 -4144960 
+[2020-06-21 14:15:46] [FINE   ] Command Add Line 125 135 308 93 -39373 
+[2020-06-21 14:15:50] [FINE   ] Command Add Line 155 128 136 134 -39373 
+[2020-06-21 14:15:57] [FINE   ] Command Modify Line 125 135 308 93 -39373 -> Line 125 135 308 93 -13261 
+[2020-06-21 14:16:03] [FINE   ] Command Add Square 208 213 22 -13261 -4144960 
+[2020-06-21 14:16:14] [FINE   ] Command Modify Square 208 213 22 -13261 -65536 -> Square 208 213 22 -1 -65536 
+[2020-06-21 14:16:25] [FINE   ] Application is closed. 

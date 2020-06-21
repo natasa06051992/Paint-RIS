@@ -10,28 +10,35 @@ import view.*;
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.awt.Color;
 
 public class Controller
 {
     Draw draw;
+
     private CommandManager manager;
     public final Logger logger = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     public Controller(Draw draw){
         this.draw = draw;
         manager = CommandManager.getInstance();
+        manager.setDraw(draw);
     }
     public void AddShapeAction(Shape shape) {
         AddShapeCommand addComand= new AddShapeCommand(draw.getModel(), shape);
         List<ICommand> actionList = new ArrayList<>();
         actionList.add(addComand);
         manager.execute(actionList);
-        draw.getTxtInfo().append(addComand.getNameOfClass() +'\n');
     }
     public void RemoveShapeAction(ArrayList<Shape> shapes) {
         List<ICommand> actionList = new ArrayList<>();
@@ -40,12 +47,65 @@ public class Controller
             actionList.add(removeCommand);
         }
         manager.execute(actionList);
-        for (var action:actionList) {
-            draw.getTxtInfo().append(action.getNameOfClass() +'\n');
+    }
+    private static String line;
+    public ArrayList<String> logHistory = new ArrayList<String>();
+
+    public ArrayList<String> convertLogToList(String fileName){
+
+        try{
+            FileInputStream fstream = new FileInputStream(fileName);
+            BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
+
+            while ((line = br.readLine()) != null)   {
+
+                if(line.startsWith("[")){
+                    //line with action
+                    String[] commandMessage = line.split("[\\s]");
+                    var isCommand = false;
+                    for(int i=0;i<commandMessage.length;i++)
+                    {
+                        if(commandMessage[i].equals("Command")|| isCommand) {
+                            isCommand = true;
+                            logHistory.add(commandMessage[i]);
+                        }
+                    }
+
+                }
+            }
+            fstream.close();
+        } catch (Exception e) {
+            System.err.println("Error: " + e.getMessage());
         }
+
+        return logHistory;
     }
     public void setListeners()
     {
+        draw.getOpenLog().addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFileChooser j = new JFileChooser();
+                j.setCurrentDirectory(new File(System.getProperty("user.home")));
+                j.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                j.addChoosableFileFilter(new FileNameExtensionFilter("Log files", "log"));
+                j.setAcceptAllFileFilterUsed(true);
+
+                int result = j.showOpenDialog(draw);
+
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = j.getSelectedFile();
+                    draw.getModel().deselectAllShapes();
+
+                    ArrayList<String> logList = convertLogToList(selectedFile.getPath());
+                    executeCommands(logList);
+                }
+            }
+        });
+
+
         draw.addWindowListener(new WindowAdapter() {
 
         @Override
@@ -80,17 +140,14 @@ public class Controller
       draw.getUndo().addActionListener(new ActionListener() {
           @Override
           public void actionPerformed(ActionEvent e) {
-             if(draw.getUndo().isEnabled()){
                  manager.undo();
-             }
           }
       });
         draw.getRedo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(draw.getRedo().isEnabled()){
                     manager.redo();
-                }
+
             }
         });
       draw.getBtnDelete().addActionListener(new ActionListener() {
@@ -270,17 +327,8 @@ public class Controller
 
                     JColorChooser ccEdgeSquare = new JColorChooser();
 
-
                     JColorChooser ccInside = new JColorChooser();
-                    ccInside.setColor(((Square)draw.getSelectedShape()).getCInside());
 
-                    ChangeListener chL = new ChangeListener() {
-                        public void stateChanged(ChangeEvent changeEvent) {
-                            Color newColor = ccInside.getColor();
-                            ((Square)draw.getSelectedShape()).setCInside(newColor);
-                        }
-                    };
-                    ccInside.getSelectionModel().addChangeListener(chL);
 
                     final JComponent[] input = new JComponent[]{
                             new JLabel("X coordinate point up left: "),
@@ -433,7 +481,6 @@ public class Controller
                     Color inside = hexagon.getCInside();
 
                     JColorChooser ccEdgeHexagon = new JColorChooser();
-                    ccEdgeHexagon.setColor(((HexagonAdapter)draw.getSelectedShape()).getCEdge());
 
                     JColorChooser ccInsideHexagon = new JColorChooser();
 
@@ -465,11 +512,6 @@ public class Controller
                     );
                     if (result == JOptionPane.OK_OPTION) {
                         try{
-                            //    hexagon.getCenter().setX(Integer.parseInt(centerX.getText()));
-                            //    hexagon.getCenter().setY(Integer.parseInt(centerY.getText()));
-                            //    hexagon.setR(Integer.parseInt(R.getText()));
-                            //    hexagon.setCEdge(ccEdgeHexagon.getColor());
-                         //   hexagon.setCInside(ccInsideHexagon.getColor());
                             draw.getSelectedShape().setSelected(false);
 
                             draw.getBtnColor().setBackground(ccEdgeHexagon.getColor());
@@ -569,7 +611,6 @@ public class Controller
                 }
                 actionList.add(cmd);
                 manager.execute(actionList);
-                draw.getTxtInfo().append(cmd.getNameOfClass() +'\n');
                 draw.getSelectedShapes().clear();
                 draw.getBtnDelete().setEnabled(false);
                 draw.getBtnDelete().setEnabled(false);
@@ -784,5 +825,146 @@ public class Controller
                 }
             }
         });
+    }
+
+    private void executeCommands(ArrayList<String> logList) {
+        List<String> commands = new ArrayList<String>();
+        for(String line : logList){
+            if(line.equals("Command"))
+            {
+                if(!commands.isEmpty()){
+                    createShape(commands);
+                    commands.clear();
+                }
+            }
+            commands.add(line);
+        }
+        createShape(commands);
+    }
+
+    private void createShape(List<String> commands) {
+        Shape shape=null;
+        ArrayList<Shape> shapes= new ArrayList<>();
+        if(commands.get(commands.size()-1).equals("Undo")){
+            manager.undo();
+            return;
+        }
+        else if(commands.get(commands.size()-1).equals("Redo")){
+            manager.redo();
+            return;
+        }
+        if(commands.get(2).equals("Point")){
+            Color color = new Color(Integer.parseInt(commands.get(5)));
+            shape=new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4)),color);
+            if(commands.get(1).equals("Modify")) {
+
+                ModifyPointCommand command = new ModifyPointCommand(draw.getModel(), (Point)shape,
+                        new Point(Integer.parseInt(commands.get(8)),Integer.parseInt(commands.get(9)),new Color(Integer.parseInt(commands.get(10)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        else if(commands.get(2).equals("Line")){
+            Color color = new Color(Integer.parseInt(commands.get(7)));
+            shape=new Line(new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4))),
+                    new Point(Integer.parseInt(commands.get(5)),Integer.parseInt(commands.get(6))),
+                    color);
+            if(commands.get(1).equals("Modify")) {
+
+                var command = new ModifyLineCommand(draw.getModel(), (Line)shape,
+                        new Line(new Point(Integer.parseInt(commands.get(10)),Integer.parseInt(commands.get(11))),
+                                new Point(Integer.parseInt(commands.get(12)),Integer.parseInt(commands.get(13))),
+                                new Color(Integer.parseInt(commands.get(14)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        else if(commands.get(2).equals("Square")){
+            Color color = new Color(Integer.parseInt(commands.get(6)));
+            Color colorEdge = new Color(Integer.parseInt(commands.get(7)));
+            shape=new Square(new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4))),
+                    Integer.parseInt(commands.get(5)),
+                    color,
+                    colorEdge);
+            if(commands.get(1).equals("Modify")) {
+
+                var command = new ModifySquareCommand(draw.getModel(), (Square) shape,
+                        new Square(new Point(Integer.parseInt(commands.get(10)),Integer.parseInt(commands.get(11))),
+                                Integer.parseInt(commands.get(12)),
+                                new Color(Integer.parseInt(commands.get(13))),
+                                new Color(Integer.parseInt(commands.get(14)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        else if(commands.get(2).equals("Rectangle")){
+            Color color = new Color(Integer.parseInt(commands.get(7)));
+            Color colorEdge = new Color(Integer.parseInt(commands.get(8)));
+            shape=new Rectangle(new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4))),
+                    Integer.parseInt(commands.get(5)),
+                    Integer.parseInt(commands.get(6)),
+                    color,
+                    colorEdge);
+            if(commands.get(1).equals("Modify")) {
+
+                var command = new ModifyRectangleCommand(draw.getModel(), (Rectangle)shape,
+                        new Rectangle(new Point(Integer.parseInt(commands.get(11)),Integer.parseInt(commands.get(12))),
+                        Integer.parseInt(commands.get(13)),
+                        Integer.parseInt(commands.get(14)),
+                        new Color(Integer.parseInt(commands.get(15))),
+                        new Color(Integer.parseInt(commands.get(16)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        else if(commands.get(2).equals("Circle")){
+            Color color = new Color(Integer.parseInt(commands.get(6)));
+            Color colorEdge = new Color(Integer.parseInt(commands.get(7)));
+            shape=new Circle(new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4))),
+                    Integer.parseInt(commands.get(5)),
+                    color,
+                    colorEdge);
+            if(commands.get(1).equals("Modify")) {
+
+                var command = new ModifyCircleCommand(draw.getModel(), (Circle)shape,
+                        new Circle(new Point(Integer.parseInt(commands.get(10)),Integer.parseInt(commands.get(11))),
+                                Integer.parseInt(commands.get(12)),
+                                new Color(Integer.parseInt(commands.get(13))),
+                                new Color(Integer.parseInt(commands.get(14)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        else if(commands.get(2).equals("Hexagon")){
+            Color color = new Color(Integer.parseInt(commands.get(6)));
+            Color colorEdge = new Color(Integer.parseInt(commands.get(7)));
+            shape=new HexagonAdapter(new Point(Integer.parseInt(commands.get(3)),Integer.parseInt(commands.get(4))),
+                    Integer.parseInt(commands.get(5)),
+                    color,
+                    colorEdge);
+            if(commands.get(1).equals("Modify")) {
+
+                var command = new ModifyHexagonCommand(draw.getModel(), (HexagonAdapter) shape,
+                        new HexagonAdapter(new Point(Integer.parseInt(commands.get(10)),Integer.parseInt(commands.get(11))),
+                                Integer.parseInt(commands.get(12)),
+                                new Color(Integer.parseInt(commands.get(13))),
+                                new Color(Integer.parseInt(commands.get(14)))));
+                List<ICommand> actionList = new ArrayList<>();
+                actionList.add(command);
+                manager.execute(actionList);
+            }
+        }
+        if(commands.get(1).equals("Add")){
+            AddShapeAction(shape);
+        }
+        else if(commands.get(1).equals("Remove")){
+            shapes.add(shape);
+            RemoveShapeAction(shapes);
+        }
     }
 }
