@@ -7,7 +7,7 @@ import java.awt.*;
 public class HexagonAdapter extends SurfaceShape implements Shiftable{
     private Point center;
     Hexagon hexagon;
-
+    private static final long serialversionUID = 12934898318L;
     public HexagonAdapter(int x, int y, int radius){
         this.hexagon=new Hexagon(x, y, radius);
         hexagon.setR(radius);
@@ -118,7 +118,6 @@ public class HexagonAdapter extends SurfaceShape implements Shiftable{
         hexagon.setY(hexagon.getY() + y);
     }
 
-    @Override
     public int compareTo(Object o) {
         if(o instanceof HexagonAdapter){
             HexagonAdapter helperHexagon = (HexagonAdapter) o;

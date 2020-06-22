@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 
 public class Circle extends SurfaceShape implements Shiftable{
+	private static final long serialversionUID = 1293489838L;
 	private Point center;
 	private int r;
 

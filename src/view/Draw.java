@@ -20,6 +20,16 @@ public class Draw extends JFrame {
 
 	private final Menu menuFile;
 	private final MenuItem OpenLog;
+	private final MenuItem OpenFile;
+	private final MenuItem Save;
+
+	public MenuItem getOpenFile() {
+		return OpenFile;
+	}
+
+	public MenuItem getSave() {
+		return Save;
+	}
 
 	public MenuItem getOpenLog() {
 		return OpenLog;
@@ -296,6 +306,10 @@ public class Draw extends JFrame {
 		menuFile = new Menu("File");
 		menuBar.add(menuFile);
 		menuFile.add(OpenLog);
+		OpenFile = new MenuItem("Open file");
+		Save = new MenuItem("Save");
+		menuFile.add(OpenFile);
+		menuFile.add(Save);
 		menuEdit = new Menu("Edit");
 		menuBar.add(menuEdit);
 		menuEdit.add(Undo);

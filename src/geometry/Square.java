@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Square extends SurfaceShape implements Shiftable{
 	protected Point upLeft;
 	protected int sideLength;
-
+	private static final long serialversionUID = 129348983778L;
 	public Square() {
 
 	}

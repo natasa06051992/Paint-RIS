@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Line extends Shape{
 	private Point pStart;
 	private Point pEnd;
-
+	private static final long serialversionUID = 129348469838L;
 	public Line(){
 
 	}

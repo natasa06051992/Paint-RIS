@@ -2,13 +2,14 @@ package geometry;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.io.Serializable;
 
-public abstract class Shape implements Comparable{
+public abstract class Shape implements Serializable {
 
 	private String colorString = "black";
 	private  Color color = Color.lightGray;
 	private boolean selected;
-	
+	private static final long serialversionUID = 129343489838L;
 	public Shape(){
 		
 	}

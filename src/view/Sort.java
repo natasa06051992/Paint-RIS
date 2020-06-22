@@ -96,7 +96,8 @@ public class Sort extends JFrame {
 				for (int i = 0; i < dlm.size(); i++) {
 					squares.add((Square) dlm.get(i));
 				}
-				Collections.sort(squares);
+				//ISPAVIIII
+				//Collections.sort(squares);
 				dlm.removeAllElements();
 				for (Square kv : squares) {
 					dlm.addElement(kv);

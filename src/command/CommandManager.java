@@ -34,7 +34,6 @@ public class CommandManager {
             draw.getTxtInfo().append(action.getNameOfClass()+'\n');
         }
     }
-
     public void undo() {
         Optional<List<ICommand>> optionalActions = queueStackNormal.pop();
         optionalActions.ifPresent(aList -> {

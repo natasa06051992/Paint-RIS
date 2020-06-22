@@ -6,7 +6,7 @@ import java.awt.Graphics;
 public class Rectangle extends Square{
 
 	private int height;
-
+	private static final long serialversionUID = 1293484439838L;
 	public Rectangle(){
 
 	}

@@ -5,6 +5,8 @@ import geometry.*;
 import geometry.Point;
 import geometry.Rectangle;
 import geometry.Shape;
+import seriazable.deserialize;
+import seriazable.serialize;
 import view.*;
 
 import javax.swing.*;
@@ -83,7 +85,6 @@ public class Controller
     public void setListeners()
     {
         draw.getOpenLog().addActionListener(new ActionListener() {
-
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -105,7 +106,50 @@ public class Controller
             }
         });
 
+        draw.getSave().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                JFileChooser j = new JFileChooser();
+                j.setCurrentDirectory(new File(System.getProperty("user.home")));
+                j.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                j.addChoosableFileFilter(new FileNameExtensionFilter("Ser files", "ser"));
+                j.setAcceptAllFileFilterUsed(true);
+
+                int result = j.showSaveDialog(draw);
+
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = j.getSelectedFile();
+
+
+                    serialize serialize = new serialize();
+                    serialize.serialize(selectedFile.getPath(), draw.getModel().getShapes());
+                }
+            }
+        });
+
+        draw.getOpenFile().addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                JFileChooser j = new JFileChooser();
+                j.setCurrentDirectory(new File(System.getProperty("user.home")));
+                j.setFileSelectionMode(JFileChooser.FILES_ONLY);
+                j.addChoosableFileFilter(new FileNameExtensionFilter("Ser files", "ser"));
+                j.setAcceptAllFileFilterUsed(true);
+
+                int result = j.showOpenDialog(draw);
+
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    File selectedFile = j.getSelectedFile();
+                    draw.getModel().deselectAllShapes();
+
+                    deserialize deserialize = new deserialize();
+                    var shapes = deserialize.deserialize(selectedFile.getPath());
+                    shapes.forEach(shape->draw.getModel().addShape(shape));
+                }
+            }
+        });
         draw.addWindowListener(new WindowAdapter() {
 
         @Override
@@ -143,7 +187,7 @@ public class Controller
                  manager.undo();
           }
       });
-        draw.getRedo().addActionListener(new ActionListener() {
+      draw.getRedo().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                     manager.redo();
@@ -180,7 +224,7 @@ public class Controller
         });
 
 
-        draw.getBtnModify().addActionListener(new ActionListener() {
+      draw.getBtnModify().addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 List<ICommand> actionList = new ArrayList<>();
                 ICommand cmd = null;
@@ -618,11 +662,11 @@ public class Controller
             }
         });
 
-
       draw.getModel().addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
 
+                if (e.getButton() == MouseEvent.BUTTON1) {
                 draw.setX(e.getX());
                 draw.setY(e.getY());
 
@@ -822,6 +866,78 @@ public class Controller
                         draw.getBtnModify().setEnabled(false);
                     }
 
+                }
+                }else if (e.getButton() == MouseEvent.BUTTON3 &&
+                        draw.getSelectedShapes() != null&&
+                        draw.getSelectedShapes().size()==1){
+
+                    JPopupMenu menu = new JPopupMenu();
+                    JMenuItem bringToFront= new JMenuItem("Bring To Front");
+                    JMenuItem sendToBack = new JMenuItem("Send To Back");
+                    JMenuItem stepToFront = new JMenuItem("Step To Front");
+                    JMenuItem stepToBack = new JMenuItem("Step To Back");
+
+                    menu.add(bringToFront);
+                    menu.add(sendToBack);
+                    menu.add(stepToFront);
+                    menu.add(stepToBack);
+                    bringToFront.setEnabled(true);
+                    stepToFront.setEnabled(true);
+                    sendToBack.setEnabled(true);
+                    stepToBack.setEnabled(true);
+                    if(draw.getModel().getShapes().indexOf(draw.getSelectedShape())==0){
+
+                        sendToBack.setEnabled(false);
+                        stepToBack.setEnabled(false);
+                        bringToFront.setEnabled(true);
+                        stepToFront.setEnabled(true);
+                    }
+                    else if(draw.getModel().getShapes().indexOf(draw.getSelectedShape())==
+                            draw.getModel().getShapes().size()-1){
+                        bringToFront.setEnabled(false);
+                        stepToFront.setEnabled(false);
+                        sendToBack.setEnabled(true);
+                        stepToBack.setEnabled(true);
+                    }
+                    menu.show(e.getComponent(), e.getX(), e.getY());
+
+                    bringToFront.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+
+                            var command = new BringToFrontCommand(draw.getModel(), draw.getSelectedShape());
+                            var list = new ArrayList<ICommand>();
+                            list.add(command);
+                            manager.execute(list);
+                        }
+                    });
+                    sendToBack.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            var command = new SendToBackCommand(draw.getModel(), draw.getSelectedShape());
+                            var list = new ArrayList<ICommand>();
+                            list.add(command);
+                            manager.execute(list);
+                        }
+                    });
+                    stepToFront.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            var command = new StepToFrontCommand(draw.getModel(), draw.getSelectedShape());
+                            var list = new ArrayList<ICommand>();
+                            list.add(command);
+                            manager.execute(list);
+                        }
+                    });
+                    stepToBack.addActionListener(new ActionListener() {
+                        @Override
+                        public void actionPerformed(ActionEvent e) {
+                            var command = new StepToBackCommand(draw.getModel(), draw.getSelectedShape());
+                            var list = new ArrayList<ICommand>();
+                            list.add(command);
+                            manager.execute(list);
+                        }
+                    });
                 }
             }
         });

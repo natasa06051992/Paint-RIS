@@ -7,7 +7,7 @@ public class Point extends Shape implements Shiftable{
 	private int x;
 	private int y;
 
-
+	private static final long serialversionUID = 129348922838L;
 	public Point(){
 
 	}
