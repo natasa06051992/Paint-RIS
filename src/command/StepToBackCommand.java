@@ -6,13 +6,13 @@ import model.Model;
 import java.util.Collections;
 
 public class StepToBackCommand implements ICommand {
-    private final int index;
     Model model;
-    Shape shape;
-    public StepToBackCommand(Model model, Shape shape){
+    int index;
+    int tempIndex;
+    public StepToBackCommand(Model model, int index){
         this.model=model;
-        this.shape=shape;
-        index = model.getShapes().indexOf(shape);
+        this.index=index;
+        tempIndex= index;
     }
     @Override
     public void execute() {
@@ -23,11 +23,11 @@ public class StepToBackCommand implements ICommand {
 
     @Override
     public void undo() {
-
+        Collections.swap(model.getShapes(), index-1, index);
     }
 
     @Override
     public String getNameOfClass() {
-        return null;
+        return "Command StepToBack shape at intex "+ tempIndex;
     }
 }

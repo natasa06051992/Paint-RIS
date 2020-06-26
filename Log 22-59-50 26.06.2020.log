@@ -1,0 +1,7 @@
+[2020-06-26 23:00:04] [FINE   ] Command Add Square 133 97 55 -6750055 -4144960 
+[2020-06-26 23:00:25] [FINE   ] Command Add Circle 173 135 55 -6750055 -4144960 
+[2020-06-26 23:01:03] [FINE   ] Command Add Circle 173 135 55 -6750055 -4144960 Undo 
+[2020-06-26 23:01:24] [FINE   ] Command Add Circle 184 147 22 -6750055 -4144960 
+[2020-06-26 23:01:31] [FINE   ] Command Add Hexagon 199 159 22 -6750055 -4144960 
+[2020-06-26 23:03:14] [FINE   ] Command SendToBack shape at 1 
+[2020-06-26 23:03:19] [FINE   ] Application is closed. 

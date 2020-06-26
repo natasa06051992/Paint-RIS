@@ -905,7 +905,7 @@ public class Controller
                         @Override
                         public void actionPerformed(ActionEvent e) {
 
-                            var command = new BringToFrontCommand(draw.getModel(), draw.getSelectedShape());
+                            var command = new BringToFrontCommand(draw.getModel(), draw.getModel().getShapes().indexOf(draw.getSelectedShape()));
                             var list = new ArrayList<ICommand>();
                             list.add(command);
                             manager.execute(list);
@@ -914,7 +914,7 @@ public class Controller
                     sendToBack.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            var command = new SendToBackCommand(draw.getModel(), draw.getSelectedShape());
+                            var command = new SendToBackCommand(draw.getModel(), draw.getModel().getShapes().indexOf(draw.getSelectedShape()));
                             var list = new ArrayList<ICommand>();
                             list.add(command);
                             manager.execute(list);
@@ -923,7 +923,7 @@ public class Controller
                     stepToFront.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            var command = new StepToFrontCommand(draw.getModel(), draw.getSelectedShape());
+                            var command = new StepToFrontCommand(draw.getModel(), draw.getModel().getShapes().indexOf(draw.getSelectedShape()));
                             var list = new ArrayList<ICommand>();
                             list.add(command);
                             manager.execute(list);
@@ -932,7 +932,7 @@ public class Controller
                     stepToBack.addActionListener(new ActionListener() {
                         @Override
                         public void actionPerformed(ActionEvent e) {
-                            var command = new StepToBackCommand(draw.getModel(), draw.getSelectedShape());
+                            var command = new StepToBackCommand(draw.getModel(), draw.getModel().getShapes().indexOf(draw.getSelectedShape()));
                             var list = new ArrayList<ICommand>();
                             list.add(command);
                             manager.execute(list);
@@ -960,6 +960,7 @@ public class Controller
 
     private void createShape(List<String> commands) {
         Shape shape=null;
+        List<ICommand> actionList = new ArrayList<>();
         ArrayList<Shape> shapes= new ArrayList<>();
         if(commands.get(commands.size()-1).equals("Undo")){
             manager.undo();
@@ -976,7 +977,6 @@ public class Controller
 
                 ModifyPointCommand command = new ModifyPointCommand(draw.getModel(), (Point)shape,
                         new Point(Integer.parseInt(commands.get(8)),Integer.parseInt(commands.get(9)),new Color(Integer.parseInt(commands.get(10)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
@@ -992,7 +992,6 @@ public class Controller
                         new Line(new Point(Integer.parseInt(commands.get(10)),Integer.parseInt(commands.get(11))),
                                 new Point(Integer.parseInt(commands.get(12)),Integer.parseInt(commands.get(13))),
                                 new Color(Integer.parseInt(commands.get(14)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
@@ -1011,7 +1010,6 @@ public class Controller
                                 Integer.parseInt(commands.get(12)),
                                 new Color(Integer.parseInt(commands.get(13))),
                                 new Color(Integer.parseInt(commands.get(14)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
@@ -1032,7 +1030,6 @@ public class Controller
                         Integer.parseInt(commands.get(14)),
                         new Color(Integer.parseInt(commands.get(15))),
                         new Color(Integer.parseInt(commands.get(16)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
@@ -1051,7 +1048,6 @@ public class Controller
                                 Integer.parseInt(commands.get(12)),
                                 new Color(Integer.parseInt(commands.get(13))),
                                 new Color(Integer.parseInt(commands.get(14)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
@@ -1070,10 +1066,29 @@ public class Controller
                                 Integer.parseInt(commands.get(12)),
                                 new Color(Integer.parseInt(commands.get(13))),
                                 new Color(Integer.parseInt(commands.get(14)))));
-                List<ICommand> actionList = new ArrayList<>();
                 actionList.add(command);
                 manager.execute(actionList);
             }
+        }
+        else if(commands.get(1).equals("BringToFront")){
+            var command = new BringToFrontCommand(draw.getModel(), Integer.parseInt(commands.get(5)));
+            actionList.add(command);
+            manager.execute(actionList);
+        }
+        else if(commands.get(1).equals("SendToBack")){
+            var command = new SendToBackCommand(draw.getModel(), Integer.parseInt(commands.get(5)));
+            actionList.add(command);
+            manager.execute(actionList);
+        }
+        else if(commands.get(1).equals("StepToBack")){
+            var command = new StepToBackCommand(draw.getModel(), Integer.parseInt(commands.get(5)));
+            actionList.add(command);
+            manager.execute(actionList);
+        }
+        else if(commands.get(1).equals("StepToFront")){
+            var command = new StepToFrontCommand(draw.getModel(), Integer.parseInt(commands.get(5)));
+            actionList.add(command);
+            manager.execute(actionList);
         }
         if(commands.get(1).equals("Add")){
             AddShapeAction(shape);

@@ -7,12 +7,12 @@ import java.util.Collections;
 
 public class SendToBackCommand implements ICommand {
     Model model;
-    Shape shape;
     int index;
-    public SendToBackCommand(Model model, Shape shape){
+    int tempIndex;
+    public SendToBackCommand(Model model, int index){
         this.model=model;
-        this.shape=shape;
-        index = model.getShapes().indexOf(shape);
+        this.index=index;
+        tempIndex= index;
     }
     @Override
     public void execute() {
@@ -25,11 +25,13 @@ public class SendToBackCommand implements ICommand {
 
     @Override
     public void undo() {
-
+        for(int i=0; i < index; i++){
+            Collections.swap(model.getShapes(), i, i+1);
+        }
     }
 
     @Override
     public String getNameOfClass() {
-        return null;
+        return "Command SendToBack shape at index "+ tempIndex;
     }
 }

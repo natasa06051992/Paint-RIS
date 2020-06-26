@@ -6,28 +6,29 @@ import model.Model;
 import java.util.Collections;
 
 public class StepToFrontCommand implements ICommand {
-    private final int index;
     Model model;
-    Shape shape;
-    public StepToFrontCommand(Model model, Shape shape){
+    int index;
+    int tempIndex;
+    public StepToFrontCommand(Model model, int index){
         this.model=model;
-        this.shape=shape;
-        index = model.getShapes().indexOf(shape);
+        this.index=index;
+        tempIndex= index;
     }
     @Override
     public void execute() {
-        if(index<model.getShapes().size()-1){
+        if(index<model.getShapes().size()){
             Collections.swap(model.getShapes(), index, index+1);
         }
     }
 
     @Override
     public void undo() {
+        Collections.swap(model.getShapes(), index+1, index);
 
     }
 
     @Override
     public String getNameOfClass() {
-        return null;
+        return "Command StepToFront shape at intex "+ tempIndex;
     }
 }

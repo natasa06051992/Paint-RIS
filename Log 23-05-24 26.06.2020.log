@@ -1,0 +1,5 @@
+[2020-06-26 23:05:29] [FINE   ] Command Add Square 159 127 33 -4144960 -4144960 
+[2020-06-26 23:05:41] [FINE   ] Command Add Circle 187 154 22 -10092442 -4144960 
+[2020-06-26 23:05:48] [FINE   ] Command Add Hexagon 202 170 22 -10092442 -4144960 
+[2020-06-26 23:06:16] [FINE   ] Command SendToBack shape at 1 
+[2020-06-26 23:07:11] [FINE   ] Command BringToFront shape at index 0 

@@ -7,12 +7,12 @@ import java.util.Collections;
 
 public class BringToFrontCommand implements ICommand {
     Model model;
-    Shape shape;
     int index;
-    public BringToFrontCommand(Model model, Shape shape){
+    int tempIndex;
+    public BringToFrontCommand(Model model, int index){
         this.model=model;
-        this.shape=shape;
-        index=model.getShapes().indexOf(shape);
+        this.index=index;
+        tempIndex= index;
     }
     @Override
     public void execute() {
@@ -24,11 +24,16 @@ public class BringToFrontCommand implements ICommand {
 
     @Override
     public void undo() {
-
+        for(int i=model.getShapes().size()-1; i>index; i--){
+            if(i==0){
+                continue;
+            }
+            Collections.swap(model.getShapes(), i, i-1);
+        }
     }
 
     @Override
     public String getNameOfClass() {
-        return null;
+        return "Command BringToFront shape at index "+ tempIndex;
     }
 }
