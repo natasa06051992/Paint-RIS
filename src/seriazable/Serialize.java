@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
-public class serialize {
+public class Serialize {
     private static final long serialversionUID = 129348938L;
     public void serialize(String location, ArrayList<Shape> shapes){
         // Serialization

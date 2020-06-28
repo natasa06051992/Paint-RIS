@@ -3,6 +3,13 @@ package command;
 import geometry.Shape;
 import model.Model;
 
+/* *
+ * * The AddShapeCommand class that implements ICommand and adds shape
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class AddShapeCommand implements ICommand{
     private Model model;
     private Shape shape;

@@ -5,7 +5,7 @@ import geometry.*;
 import java.io.*;
 import java.util.ArrayList;
 
-public class deserialize {
+public class Deserialize {
 
     Shape shape= null;
     ArrayList<Shape> shapes = null;
