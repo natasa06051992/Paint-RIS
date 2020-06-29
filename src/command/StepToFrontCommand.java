@@ -28,7 +28,7 @@ public class StepToFrontCommand implements ICommand {
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command StepToFront shape at intex "+ tempIndex;
     }
 }

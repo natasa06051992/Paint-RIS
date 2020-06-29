@@ -31,7 +31,7 @@ public class SendToBackCommand implements ICommand {
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command SendToBack shape at index "+ tempIndex;
     }
 }

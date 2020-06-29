@@ -48,7 +48,7 @@ public class ModifyHexagonCommand implements ICommand{
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command Modify "+ newHexagon.toString()+" -> "+oldHexagon.toString();
     }
 }

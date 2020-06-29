@@ -51,7 +51,7 @@ public class ModifyRectangleCommand implements ICommand{
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command Modify "+from.toString()+" -> "+oldRectangle.toString();
     }
 }

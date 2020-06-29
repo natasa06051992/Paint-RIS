@@ -43,7 +43,7 @@ public class ModifyLineCommand implements ICommand{
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command Modify "+fromLine +" -> "+oldLine.toString();
     }
 }

@@ -22,7 +22,7 @@ public class RemoveShapeCommand implements ICommand{
     }
 
     @Override
-    public String getNameOfClass() {
+    public String getNameOfCommand() {
         return "Command Remove "+shape.toString();
     }
 }
