@@ -1,0 +1,11 @@
+[2020-07-02 00:04:57] [FINE   ] Command Add Point 212 107 -4144960 
+[2020-07-02 00:04:58] [FINE   ] Command Add Point 205 181 -4144960 
+[2020-07-02 00:05:02] [FINE   ] Command Add Point 171 135 -16711834 
+[2020-07-02 00:05:03] [FINE   ] Command Add Point 301 172 -16711834 
+[2020-07-02 00:05:03] [FINE   ] Command Add Point 148 205 -16711834 
+[2020-07-02 00:05:08] [FINE   ] Command Add Point 289 117 -16711834 
+[2020-07-02 00:05:11] [FINE   ] Command Add Line 66 101 309 49 -16711834 
+[2020-07-02 00:05:20] [FINE   ] Command Add Circle 35 249 22 -16711834 -52378 
+[2020-07-02 00:05:27] [FINE   ] Command Add Circle 35 249 22 -16711834 -52378 Undo 
+[2020-07-02 00:05:29] [FINE   ] Command Add Circle 35 249 22 -16711834 -52378 Redo 
+[2020-07-02 00:05:33] [FINE   ] Application is closed. 

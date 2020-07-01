@@ -249,33 +249,27 @@ public class Controller
                 draw.setX(e.getX());
                 draw.setY(e.getY());
                 var shape = draw.getCbxShapes().getSelectedItem();
-                if(shape instanceof Point) {
+                if(shape.equals("Point")) {
                     createPoint();
                 }
-                else if(shape instanceof Line){
-
+                else if(shape.equals("Line")){
                     createLine(e);
                 }
-                else if(shape instanceof Circle){
-
+                else if(shape.equals("Circle")){
                     createCircleDialog();
                 }
-                else if(shape instanceof HexagonAdapter){
-
+                else if(shape.equals("Hexagon")){
                     createHexagonDialog();
                 }
-                else if(shape instanceof Square){
-
+                else if(shape.equals("Square")){
                     createSquareDialog();
                 }
-                else if(shape instanceof Rectangle){
-
+                else if(shape.equals("Rectangle")){
                     createRectangleDialog();
                 }
                 else if (shape.toString().equals("Choose shape"))
                 {
                     manageButtons();
-
                 }
                 }else if (e.getButton() == MouseEvent.BUTTON3 &&
                         draw.getSelectedShapes() != null&&
