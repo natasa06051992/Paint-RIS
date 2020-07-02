@@ -1,21 +1,26 @@
 package view;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import controller.Controller;
+import geometry.Point;
+import geometry.Shape;
+import logging.LogWriter;
+import model.Model;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.logging.Logger;
 
-import controller.Controller;
-
-import geometry.Shape;
-import geometry.Point;
-import logging.LogWriter;
-import model.Model;
-
+/* *
+ * * The Draw class that extends JFrame
+ * * Main GUI
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class Draw extends JFrame {
 
 	private final Menu menuFile;

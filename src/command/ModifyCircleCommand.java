@@ -10,6 +10,13 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
 
+/* *
+ * * The ModifyCircleCommand class that implements ICommand and modify circle
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class ModifyCircleCommand implements ICommand{
     private Model model;
     private Circle oldCircle;
@@ -17,6 +24,12 @@ public class ModifyCircleCommand implements ICommand{
     private Circle original;
     private Circle fromShape;
 
+    /**
+     * Constructor that creates object of class ModifyCircleCommand
+     * @param model Model where shape is added
+     * @param circle Old circle
+     * @param shape New circle
+     */
     public ModifyCircleCommand(Model model, Circle circle, Circle shape) {
         this.model = model;
         this.oldCircle=circle;
@@ -24,6 +37,9 @@ public class ModifyCircleCommand implements ICommand{
         original=new Circle();
     }
 
+    /**
+     * Executes command
+     */
     @Override
     public void execute() {
         original.setR(oldCircle.getR());
@@ -38,6 +54,9 @@ public class ModifyCircleCommand implements ICommand{
 
     }
 
+    /**
+     * Undoes command
+     */
     @Override
     public void undo() {
         fromShape = newCircle;
@@ -47,6 +66,10 @@ public class ModifyCircleCommand implements ICommand{
         oldCircle.setCInside(original.getCInside());
     }
 
+    /**
+     * Sets name of command and returns it
+     * @return name of command
+     */
     @Override
     public String getNameOfCommand() {
         return "Command Modify "+ fromShape.toString() + " -> "+oldCircle.toString();

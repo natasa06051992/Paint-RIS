@@ -17,7 +17,7 @@ public class BringToFrontCommand implements ICommand {
 
     /**
      * Constructor that creates object BringToFrontCommand
-     * @param model Model that contains shapes++
+     * @param model Model where shape is added
      * @param index of selected shape
      */
     public BringToFrontCommand(Model model, int index){

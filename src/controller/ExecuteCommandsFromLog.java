@@ -13,10 +13,23 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
+/* *
+ * * The ExecuteCommandsFromLog class that reads log and execute actions
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class ExecuteCommandsFromLog {
     ArrayList<String> logList;
     CommandManager manager;
     Model model;
+
+    /**
+     * Constructor that creates ExecuteCommandsFromLog object
+     * @param manager CommandManager class that manages commands
+     * @param model Model that contains shapes
+     */
     public ExecuteCommandsFromLog(CommandManager manager, Model model) {
         this.manager=manager;
         this.model=model;
@@ -24,6 +37,10 @@ public class ExecuteCommandsFromLog {
 
     private static String line;
 
+    /**
+     * Converts log to list of commands
+     * @param fileName Name of log file
+     */
     public void convertLogToList(String fileName){
 
         try{
@@ -52,12 +69,21 @@ public class ExecuteCommandsFromLog {
         }
     }
 
+    /**
+     * Adds shape to manager
+     * @param shape Shape that is added
+     */
     public void AddShapeAction(Shape shape) {
         AddShapeCommand addComand= new AddShapeCommand(model, shape);
         List<ICommand> actionList = new ArrayList<>();
         actionList.add(addComand);
         manager.execute(actionList);
     }
+
+    /**
+     * Removes shape to manager
+     * @param shapes Shape that is added
+     */
     public void RemoveShapeAction(ArrayList<Shape> shapes) {
         List<ICommand> actionList = new ArrayList<>();
         for (var shape:shapes) {
@@ -66,6 +92,10 @@ public class ExecuteCommandsFromLog {
         }
         manager.execute(actionList);
     }
+
+    /**
+     * Executes list of commands
+     */
     public void execute() {
         List<String> commands = new ArrayList<String>();
         for(String line : logList){
@@ -81,6 +111,10 @@ public class ExecuteCommandsFromLog {
         createShape(commands);
     }
 
+    /**
+     * Create shape and executes command
+     * @param commands List of commands
+     */
     private void createShape(List<String> commands) {
         Shape shape=null;
         List<ICommand> actionList = new ArrayList<>();

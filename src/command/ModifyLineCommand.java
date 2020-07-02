@@ -9,20 +9,34 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-
+/* *
+ * * The ModifyLineCommand class that implements ICommand and modify line
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class ModifyLineCommand implements ICommand{
     private Model model;
     private Line original;
     private Line oldLine;
     private Line newLine;
     private Line fromLine;
+    /**
+     * Constructor that creates object of class ModifyLineCommand
+     * @param model Model that contains shapes
+     * @param oldLine Old line
+     * @param newLine New line
+     */
     public ModifyLineCommand(Model model, Line oldLine, Line newLine) {
         this.model=model;
         this.oldLine=oldLine;
         this.newLine=newLine;
         original = new Line();
     }
-
+    /**
+     * Executes command
+     */
     @Override
     public void execute() {
         original.setpEnd(oldLine.getpEnd());
@@ -34,6 +48,9 @@ public class ModifyLineCommand implements ICommand{
         fromLine = original;
     }
 
+    /**
+     * Undoes command
+     */
     @Override
     public void undo() {
         fromLine= newLine;
@@ -42,6 +59,10 @@ public class ModifyLineCommand implements ICommand{
         oldLine.setcColor(original.getcColor());
     }
 
+    /**
+     * Sets name of command and returns it
+     * @return name of command
+     */
     @Override
     public String getNameOfCommand() {
         return "Command Modify "+fromLine +" -> "+oldLine.toString();

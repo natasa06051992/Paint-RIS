@@ -9,14 +9,25 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import java.awt.*;
-
+/* *
+ * * The ModifyRectangleCommand class that implements ICommand and modify rectangle
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class ModifyRectangleCommand implements ICommand{
     private Model model;
     Rectangle newRectangle;
     Rectangle oldRectangle;
     Rectangle original;
     Rectangle from;
-
+    /**
+     * Constructor that creates object of class ModifyRectangleCommand
+     * @param model Model that contains shapes
+     * @param rectangle Old rectangle
+     * @param newRectangle New rectangle
+     */
     public ModifyRectangleCommand(Model model, Rectangle rectangle, Rectangle newRectangle) {
         this.model=model;
         oldRectangle = rectangle;
@@ -24,6 +35,9 @@ public class ModifyRectangleCommand implements ICommand{
         original = new Rectangle();
     }
 
+    /**
+     * Executes command
+     */
     @Override
     public void execute() {
         original.setHeight(oldRectangle.getHeight());
@@ -40,6 +54,9 @@ public class ModifyRectangleCommand implements ICommand{
         from= original;
     }
 
+    /**
+     * Undoes command
+     */
     @Override
     public void undo() {
         oldRectangle.setHeight(original.getHeight());
@@ -50,6 +67,10 @@ public class ModifyRectangleCommand implements ICommand{
         from = newRectangle;
     }
 
+    /**
+     * Sets name of command and returns it
+     * @return name of command
+     */
     @Override
     public String getNameOfCommand() {
         return "Command Modify "+from.toString()+" -> "+oldRectangle.toString();

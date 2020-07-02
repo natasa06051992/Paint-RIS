@@ -1,15 +1,15 @@
 package command;
 
 import geometry.Point;
-import geometry.Shape;
 import model.Model;
-import view.Draw;
 
-import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.awt.*;
-
+/* *
+ * * The ModifyPointCommand class that implements ICommand and modify point
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class ModifyPointCommand implements ICommand{
     private Model model;
     private Point newPoint;
@@ -17,13 +17,22 @@ public class ModifyPointCommand implements ICommand{
     private Point original;
     private Point fromPoint;
 
-    public ModifyPointCommand(Model model, geometry.Point oldPoint, geometry.Point newPoint) {
+    /**
+     * Constructor that creates object of class ModifyPointCommand
+     * @param model Model that contains shapes
+     * @param oldPoint Old point
+     * @param newPoint New point
+     */
+    public ModifyPointCommand(Model model, Point oldPoint, Point newPoint) {
         this.model = model;
         this.newPoint=newPoint;
         this.oldPoint=oldPoint;
         original= new Point();
     }
 
+    /**
+     * Executes command
+     */
     @Override
     public void execute() {
         original.setX(oldPoint.getX());
@@ -36,6 +45,9 @@ public class ModifyPointCommand implements ICommand{
         fromPoint= original;
     }
 
+    /**
+     * Undoes command
+     */
     @Override
     public void undo() {
         oldPoint.setX(original.getX());
@@ -43,7 +55,10 @@ public class ModifyPointCommand implements ICommand{
         oldPoint.setcColor(original.getcColor());
         fromPoint = newPoint;
     }
-
+    /**
+     * Sets name of command and returns it
+     * @return name of command
+     */
     @Override
     public String getNameOfCommand() {
         return "Command Modify "+fromPoint.toString() +" -> "+newPoint.toString();
