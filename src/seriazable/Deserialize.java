@@ -5,10 +5,23 @@ import geometry.*;
 import java.io.*;
 import java.util.ArrayList;
 
+/* *
+ * * The Deserialize class that deserialize selected file
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class Deserialize {
 
     Shape shape= null;
     ArrayList<Shape> shapes = null;
+
+    /**
+     * This method deserialize file
+     * @param location Location of file
+     * @return ArrayList of all shapes
+     */
     public ArrayList<Shape> deserialize(String location){
         ObjectInputStream in=null;
         FileInputStream input=null;
@@ -44,6 +57,7 @@ public class Deserialize {
             return null;
         }
         finally {
+
             try {
                 // Close the input stream.
                 in.close();

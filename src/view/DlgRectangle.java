@@ -15,6 +15,13 @@ import java.awt.GridLayout;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
+/* *
+ * * The DlgRectangle class that extends JDialog
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class DlgRectangle extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -22,64 +29,66 @@ public class DlgRectangle extends JDialog {
 	private JTextField heightRectangle;
 	public Rectangle rectangle;
 	private Color colorEdge = Color.BLACK;
+	JButton btnDismiss;
+	private Color colorInside = Color.WHITE;
+	JButton btnSubmit;
 
+	/**
+	 * Sets Rectangle
+	 * @param rectangle Rectangle
+	 */
 	public void setRectangle(Rectangle rectangle) {
 		this.rectangle = rectangle;
 	}
 
+	/**
+	 * Gets edge color
+	 * @return edge inside
+	 */
 	public Color getColorEdge() {
 		return colorEdge;
 	}
 
+	/**
+	 * Gets inside color
+	 * @return color inside
+	 */
 	public Color getColorInside() {
 		return colorInside;
 	}
 
-	private Color colorInside = Color.WHITE;
-	JButton btnSubmit;
 
-	public JButton getBtnSubmit() {
+	/**
+	 * Gets button btnSubmit
+	 * @return btnSubmit
+	 */
+	public JButton getBtnSubmit()
+	{
 		return btnSubmit;
 	}
 
-	public void setBtnSubmit(JButton btnSubmit) {
-		this.btnSubmit = btnSubmit;
-	}
-
+	/**
+	 * Gets button btnDismiss
+	 * @return btnDismiss
+	 */
 	public JButton getBtnDismiss() {
 		return btnDismiss;
 	}
 
-	public void setBtnDismiss(JButton btnDismiss) {
-		this.btnDismiss = btnDismiss;
-	}
-
-	JButton btnDismiss;
-
-	public static void main(String[] args) {
-		try {
-			DlgRectangle dialog = new DlgRectangle();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
+	/**
+	 * Gets text field widthRectangle
+	 * @return text field widthRectangle
+	 */
 	public JTextField getWidthRectangle() {
 		return widthRectangle;
 	}
 
-	public void setWidthRectangle(JTextField widthRectangle) {
-		this.widthRectangle = widthRectangle;
-	}
-
+	/**
+	 * Gets text field heightRectangle
+	 * @return text field heightRectangle
+	 */
 	public JTextField getHeightRectangle() {
 		return heightRectangle;
-	}
-
-	public void setHeightRectangle(JTextField heightRectangle) {
-		this.heightRectangle = heightRectangle;
 	}
 
 	/**
@@ -133,6 +142,10 @@ public class DlgRectangle extends JDialog {
 		}
 	}
 
+	/**
+	 * Gets rectangle
+	 * @return rectangle
+	 */
 	public Rectangle getRectangle() {
 		return rectangle;
 	}

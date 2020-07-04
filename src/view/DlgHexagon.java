@@ -5,45 +5,59 @@ import geometry.HexagonAdapter;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-
+/* *
+ * * The DlgHexagon class that extends JDialog
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class DlgHexagon extends JDialog {
     private final JPanel contentPanel = new JPanel();
     private JTextField radius;
     public HexagonAdapter hexagon;
     JButton btnSubmit;
+    JButton btnDismiss;
+
+    /**
+     * Gets HexagonAdapter object
+     * @return HexagonAdapter
+     */
     public HexagonAdapter getHexagon(){
         return hexagon;
     }
+
+    /**
+     * Gets text field radius
+     * @return text field radius
+     */
     public JTextField getRadius() {
         return radius;
     }
 
-    public void setRadius(JTextField radius) {
-        this.radius = radius;
-    }
-
+    /**
+     * Sets HexagonAdapter
+     * @param hexagon HexagonAdapter
+     */
     public void setHexagon(HexagonAdapter hexagon) {
         this.hexagon = hexagon;
     }
 
-    public JButton getBtnSubmit() {
+    /**
+     * Gets button btnSubmit
+     * @return btnSubmit
+     */
+    public JButton getBtnSubmit()
+    {
         return btnSubmit;
     }
 
+    /**
+     * Gets button btnDismiss
+     * @return btnDismiss
+     */
     public JButton getBtnDismiss() {
         return btnDismiss;
-    }
-
-    JButton btnDismiss;
-
-    public static void main(String[] args) {
-        try {
-            DlgHexagon dialog = new DlgHexagon();
-            dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-            dialog.setVisible(true);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     /**

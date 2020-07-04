@@ -7,18 +7,29 @@ import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 
+/* *
+ * * The Serialize class that serialize all shapes
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class Serialize {
-    private static final long serialversionUID = 129348938L;
+
+    /**
+     * This method serialize all shapes on input location
+     * @param location Location where file will be created
+     * @param shapes All shapes that will be serialized
+     */
     public void serialize(String location, ArrayList<Shape> shapes){
-        // Serialization
+
         try
         {
             String fileLocation = location.endsWith(".ser")? location: location+".ser";
-            //Saving of object in a file
+
             FileOutputStream file = new FileOutputStream(fileLocation);
             ObjectOutputStream out = new ObjectOutputStream(file);
 
-            // Method for serialization of object
             shapes.forEach(sh-> {
                 try {
                     out.writeObject(sh);
@@ -28,7 +39,6 @@ public class Serialize {
             });
             out.close();
             file.close();
-
         }
         catch(IOException ex)
         {

@@ -16,7 +16,6 @@ public abstract class Shape implements Serializable {
 	private  Color color = Color.lightGray;
 	private boolean selected;
 	private static final long serialversionUID = 129343489838L;
-
 	/**
 	 * Default constructor
 	 */

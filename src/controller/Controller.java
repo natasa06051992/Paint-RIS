@@ -19,6 +19,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import static javax.swing.JOptionPane.showMessageDialog;
+
 /* *
  * * The Controller class that
  * * can draw, modify and delete points, lines, squares, hexagones, circles and rectangles
@@ -71,11 +73,17 @@ public class Controller
 
                 if (result == JFileChooser.APPROVE_OPTION) {
                     File selectedFile = j.getSelectedFile();
-                    draw.getModel().deselectAllShapes();
 
-                    var executeCommandsFromLog = new ExecuteCommandsFromLog(commandManager, draw.getModel());
-                    executeCommandsFromLog.convertLogToList(selectedFile.getPath());
-                    executeCommandsFromLog.execute();
+                   if(!new File(selectedFile.getPath()+".lck").exists()){
+                       draw.getModel().deselectAllShapes();
+
+                       var executeCommandsFromLog = new ExecuteCommandsFromLog(commandManager, draw.getModel());
+                       executeCommandsFromLog.convertLogToList(selectedFile.getPath());
+                       executeCommandsFromLog.execute();
+                   }
+                   else{
+                       showMessageDialog(null, "This file is locked. Choose another file!");
+                   }
                 }
             }
         });
@@ -303,7 +311,8 @@ public class Controller
 
         JColorChooser ccEdgeCircle = new JColorChooser();
         JColorChooser ccInsideCircle = new JColorChooser();
-
+        ccEdgeCircle.setColor(circle.getCEdge());
+        ccInsideCircle.setColor(circle.getCInside());
         final JComponent[] inputs = new JComponent[]{
                 new JLabel("X coordinate of center: "),
                 centerX,
@@ -344,7 +353,7 @@ public class Controller
             }
             catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numeric",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -378,9 +387,9 @@ public class Controller
         Color inside = hexagon.getCInside();
 
         JColorChooser ccEdgeHexagon = new JColorChooser();
-
+        ccEdgeHexagon.setColor(hexagon.getCEdge());
         JColorChooser ccInsideHexagon = new JColorChooser();
-
+        ccInsideHexagon.setColor(hexagon.getCInside());
         final JComponent[] inputs = new JComponent[]{
                 new JLabel("X coordinate of center: "),
                 centerX,
@@ -421,7 +430,7 @@ public class Controller
             }
             catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numeric",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -458,9 +467,9 @@ public class Controller
         Color inside = rectangle.getCInside();
 
         JColorChooser ccEdgeRghtAngle = new JColorChooser();
-
+        ccEdgeRghtAngle.setColor(rectangle.getCEdge());
         JColorChooser ccInsideRightAngle = new JColorChooser();
-
+        ccInsideRightAngle.setColor(rectangle.getCInside());
         final JComponent[] inputs = new JComponent[]{
                 new JLabel("X coordinate point up left: "),
                 upLeftX,
@@ -509,7 +518,7 @@ public class Controller
             }
             catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numeric",
                         "Error",
                         JOptionPane.WARNING_MESSAGE);
@@ -537,17 +546,17 @@ public class Controller
         JTextField upLeftY = new JTextField();
         JTextField lengthLine = new JTextField();
 
-        upLeftX.setText(String.valueOf(((Square) draw.getSelectedShape()).getUpLeft().getX()));
-        upLeftY.setText(String.valueOf(((Square) draw.getSelectedShape()).getUpLeft().getY()));
-        lengthLine.setText(String.valueOf(((Square) draw.getSelectedShape()).getSideLength()));
+        upLeftX.setText(String.valueOf(square.getUpLeft().getX()));
+        upLeftY.setText(String.valueOf(square.getUpLeft().getY()));
+        lengthLine.setText(String.valueOf(square.getSideLength()));
 
         Color edge = square.getCEdge();
         Color inside = square.getCInside();
 
         JColorChooser ccEdgeSquare = new JColorChooser();
-
+        ccEdgeSquare.setColor(square.getCEdge());
         JColorChooser ccInside = new JColorChooser();
-
+        ccInside.setColor(square.getCInside());
 
         final JComponent[] input = new JComponent[]{
                 new JLabel("X coordinate point up left: "),
@@ -589,7 +598,7 @@ public class Controller
             }
             catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numeric",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -624,7 +633,7 @@ public class Controller
         endY.setText(String.valueOf(((Line) draw.getSelectedShape()).getpEnd().getY()));
 
         JColorChooser ccColorLine = new JColorChooser();
-
+        ccColorLine.setColor(draw.getSelectedShape().getcColor());
         final JComponent[] input = new JComponent[]{
                 new JLabel("X coordinate starting point: "),
                 startX,
@@ -669,7 +678,7 @@ public class Controller
             }
             catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numeric",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -694,7 +703,7 @@ public class Controller
         newY.setText(String.valueOf(((Point) draw.getSelectedShape()).getY()));
 
         JColorChooser ccColorPoint = new JColorChooser();
-
+        ccColorPoint.setColor(draw.getSelectedShape().getcColor());
         final JComponent[] input = new JComponent[]{
                 new JLabel("X coordinate point: "),
                 newX,
@@ -725,7 +734,7 @@ public class Controller
                 cmd = new ModifyPointCommand(draw.getModel(),(Point)draw.getSelectedShape(), new Point(Integer.parseInt(newX.getText()), Integer.parseInt(newY.getText()), ccColorPoint.getColor()));
             } catch (NumberFormatException e1) {
 
-                JOptionPane.showMessageDialog(null,
+                showMessageDialog(null,
                         "Input must be numberc",
                         "Error",
                         JOptionPane.ERROR_MESSAGE);
@@ -781,7 +790,7 @@ public class Controller
                     dlgCircle.dispose();
                 } catch (NumberFormatException e1) {
                     e1.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "You must enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
+                    showMessageDialog(null, "You must enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -816,7 +825,7 @@ public class Controller
                     dlgHexagon.dispose();
                 } catch (NumberFormatException e1) {
                     e1.printStackTrace();
-                    JOptionPane.showMessageDialog(null, "You must enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
+                    showMessageDialog(null, "You must enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -847,7 +856,7 @@ public class Controller
                     kvDlg.getSquare().setCInside(kvDlg.getColorInside());
                     kvDlg.dispose();
                 } catch (NumberFormatException e1) {
-                    JOptionPane.showMessageDialog(null, "Enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
+                    showMessageDialog(null, "Enter integer values!","Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }
 
@@ -888,7 +897,7 @@ public class Controller
                     dlgP.getRectangle().setCInside(dlgP.getColorInside());
                     dlgP.dispose();
                 } catch (NumberFormatException e1) {
-                    JOptionPane.showMessageDialog(null, "Insert integer values!",
+                    showMessageDialog(null, "Insert integer values!",
                             "Warning", JOptionPane.WARNING_MESSAGE);
                 }
             }

@@ -27,27 +27,6 @@ public class Draw extends JFrame {
 	private final MenuItem OpenLog;
 	private final MenuItem OpenFile;
 	private final MenuItem Save;
-
-	public MenuItem getOpenFile() {
-		return OpenFile;
-	}
-
-	public MenuItem getSave() {
-		return Save;
-	}
-
-	public MenuItem getOpenLog() {
-		return OpenLog;
-	}
-
-	public JTextArea getTxtInfo() {
-		return txtInfo;
-	}
-
-	public void setTxtInfo(JTextArea txtInfo) {
-		this.txtInfo = txtInfo;
-	}
-
 	private JTextArea txtInfo;
 	private JPanel contentPane;
 	public static DefaultListModel dlm = new DefaultListModel();
@@ -61,45 +40,101 @@ public class Draw extends JFrame {
 	private Shape selectedShape;
 	private ArrayList<Shape> selectedShapes = new ArrayList<Shape>();
 	private JTextField selectedShapeText;
-/*	static JButton btnColor;
-	static JButton btnColorInside;*/
 	JButton btnModify;
 	JButton btnDelete;
 	MenuItem Undo;
 	MenuItem Redo;
+	public static Logger logger;
+	final JButton btnColor ;
+	final JButton btnColorInside;
+	java.awt.MenuBar menuBar;
+	Menu menuEdit;
+	Model model;
 
+	/**
+	 * Gets open file menu item
+	 * @return open file menu item
+	 */
+	public MenuItem getOpenFile() {
+		return OpenFile;
+	}
+
+	/**
+	 * Gets menu item getSave
+	 * @return getSave menu item
+	 */
+	public MenuItem getSave() {
+		return Save;
+	}
+
+	/**
+	 * Gets menu item getOpenLog
+	 * @return getOpenLog menu item
+	 */
+	public MenuItem getOpenLog() {
+		return OpenLog;
+	}
+
+	/**
+	 * Gets JTextArea txtInfo
+	 * @return JTextArea txtInfo
+	 */
+	public JTextArea getTxtInfo() {
+		return txtInfo;
+	}
+
+	/**
+	 * Gets menu item getUndo
+	 * @return getUndo menu item
+	 */
 	public MenuItem getUndo() {
 		return Undo;
 	}
 
+	/**
+	 * Sets menu item undo
+	 * @param undo MenuItem undo
+	 */
 	public void setUndo(MenuItem undo) {
 		Undo = undo;
 	}
 
+	/**
+	 * Gets menu item getRedo
+	 * @return getRedo menu item
+	 */
 	public MenuItem getRedo() {
 		return Redo;
 	}
 
-	public void setRedo(MenuItem redo) {
-		Redo = redo;
-	}
-
-	java.awt.MenuBar menuBar;
-	Menu menuEdit;
+	/**
+	 * Sets first point
+	 * @param firstPoint first point
+	 */
 	public void setFirstPoint(Point firstPoint) {
 		this.firstPoint = firstPoint;
 	}
 
-	Model model;
-
+	/**
+	 * Gets Model
+	 * @return Model
+	 */
 	public Model getModel() {
 		return model;
 	}
 
+	/**
+	 * Sets secondClick
+	 * @param secondClick secondClick
+	 */
 	public void setSecondClick(int secondClick) {
 		this.secondClick = secondClick;
 	}
 
+	/**
+	 * Gets ContentPane
+	 * @return ContentPane
+	 */
 	@Override
 	public JPanel getContentPane() {
 		return contentPane;
@@ -123,81 +158,153 @@ public class Draw extends JFrame {
 		});
 	}
 
+	/**
+	 * Gets colorEdge
+	 * @return colorEdge
+	 */
 	public Color getColorEdge() {
 		return colorEdge;
 	}
 
+	/**
+	 * Gets x
+	 * @return x coordinate
+	 */
 	@Override
 	public int getX() {
 		return x;
 	}
 
+	/**
+	 * Gets y
+	 * @return y coordinate
+	 */
 	@Override
 	public int getY() {
 		return y;
 	}
 
+	/**
+	 * Gets secondClick
+	 * @return secondClick
+	 */
 	public int getSecondClick() {
 		return secondClick;
 	}
 
+	/**
+	 * Gets firstPoint
+	 * @return firstPoint
+	 */
 	public Point getFirstPoint() {
 		return firstPoint;
 	}
 
+	/**
+	 * Gets cbxShapes
+	 * @return cbxShapes
+	 */
 	public JComboBox getCbxShapes() {
 		return cbxShapes;
 	}
 
+	/**
+	 * Sets coordinate X
+	 * @param x coordinate X
+	 */
 	public void setX(int x) {
 		this.x = x;
 	}
 
+	/**
+	 * Sets coordinate y
+	 * @param y coordinate y
+	 */
 	public void setY(int y) {
 		this.y = y;
 	}
 
+	/**
+	 * Gets colorInside
+	 * @return colorInside
+	 */
 	public Color getColorInside() {
 		return colorInside;
 	}
 
+	/**
+	 * Gets selected shape
+	 * @return selected shape
+	 */
 	public Shape getSelectedShape() {
 		return selectedShape;
 	}
 
+	/**
+	 * Gets selected shape
+	 * @return ArrayList<Shape> selected shape
+	 */
 	public ArrayList<Shape> getSelectedShapes() {
 		return selectedShapes;
 	}
 
+	/**
+	 * Gets selectedShapeText
+	 * @return JTextField selectedShapeText
+	 */
 	public JTextField getSelectedShapeText() {
 		return selectedShapeText;
 	}
 
+	/**
+	 * Gets btnModify
+	 * @return btnModify
+	 */
 	public JButton getBtnModify() {
 		return btnModify;
 	}
 
+	/**
+	 * Gets btnDelete
+	 * @return btnDelete
+	 */
 	public JButton getBtnDelete() {
 		return btnDelete;
 	}
 
+	/**
+	 * Sets selected shape
+	 * @param selectedShape selectedShape
+	 */
 	public void setSelectedShape(Shape selectedShape) {
 		this.selectedShape = selectedShape;
 	}
 
+	/**
+	 * Gets btnColor
+	 * @return btnColor
+	 */
 	public JButton getBtnColor() {
 		return btnColor;
 	}
 
+	/**
+	 * Gets btnColorInside
+	 * @return btnColorInside
+	 */
 	public JButton getBtnColorInside() {
 		return btnColorInside;
 	}
-	public static Logger logger;
+
+	/**
+	 * Sets ArrayList<Shape> selectedShapes
+	 * @param selectedShapes ArrayList<Shape> selectedShapes
+	 */
 	public void setSelectedShapes(ArrayList<Shape> selectedShapes) {
 		this.selectedShapes = selectedShapes;
 	}
-	final JButton btnColor ;
-	final JButton btnColorInside;
+
+
 	/**
 	 * Create the frame.
 	 */

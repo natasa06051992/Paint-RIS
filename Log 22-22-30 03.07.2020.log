@@ -1,0 +1,14 @@
+[2020-07-03 22:22:50] [FINE   ] Command Add Line 119 107 267 107 -4144960 
+[2020-07-03 22:23:22] [FINE   ] Command Remove Line 119 107 267 107 -4144960 
+[2020-07-03 22:23:26] [FINE   ] Command Add Point 307 101 -4144960 
+[2020-07-03 22:23:35] [FINE   ] Command Add Line 87 94 312 117 -4144960 
+[2020-07-03 22:23:51] [FINE   ] Command Add Square 188 105 5 -4144960 -4144960 
+[2020-07-03 22:24:13] [FINE   ] Command Modify Square 188 105 5 -4144960 -4144960 -> Square 188 105 5000 -1 -6750004 
+[2020-07-03 22:24:28] [FINE   ] Command Modify Square 188 105 5000 -1 -6750004 -> Square 188 105 500 -1 -1 
+[2020-07-03 22:24:47] [FINE   ] Command Add Square 432 79 500 -1 -1 
+[2020-07-03 22:24:54] [FINE   ] Command Add Square 414 142 5 -1 -1 
+[2020-07-03 22:24:58] [FINE   ] Command Add Square 343 164 10 -1 -1 
+[2020-07-03 22:25:07] [FINE   ] Command Add Square 182 318 10 -1 -1 
+[2020-07-03 22:25:10] [FINE   ] Command Add Square 767 134 10 -1 -1 
+[2020-07-03 22:25:19] [FINE   ] Command Add Rectangle 599 129 10 15 -1 -1 
+[2020-07-03 22:25:29] [FINE   ] Application is closed. 

@@ -1,0 +1,22 @@
+[2020-07-03 23:27:39] [FINE   ] Command Add Square 146 37 35 -4144960 -4144960 
+[2020-07-03 23:27:46] [FINE   ] Command Add Square 170 59 55 -4144960 -4144960 
+[2020-07-03 23:27:56] [FINE   ] Command Add Square 204 95 58 -13434676 -4144960 
+[2020-07-03 23:28:06] [FINE   ] Command BringToFront shape at index 4 
+[2020-07-03 23:28:11] [FINE   ] Command Modify Square 170 59 55 -4144960 -4144960 -> Square 170 59 55 -3355648 -4144960 
+[2020-07-03 23:28:22] [FINE   ] Command Modify Square 170 59 55 -3355648 -4144960 -> Square 170 59 55 -39322 -65332 
+[2020-07-03 23:28:36] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-03 23:28:42] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-03 23:28:48] [FINE   ] Command StepToBack shape at intex 3 
+[2020-07-03 23:28:53] [FINE   ] Command StepToBack shape at intex 5 
+[2020-07-03 23:29:00] [FINE   ] Command StepToBack shape at intex 4 
+[2020-07-03 23:29:03] [FINE   ] Command StepToFront shape at intex 3 
+[2020-07-03 23:29:09] [FINE   ] Command Modify Line 284 80 44 201 -4144960 -> Line 284 80 44 201 -13421569 
+[2020-07-03 23:29:12] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-03 23:29:17] [FINE   ] Command BringToFront shape at index 2 
+[2020-07-03 23:29:23] [FINE   ] Command StepToBack shape at intex 5 
+[2020-07-03 23:29:27] [FINE   ] Command BringToFront shape at index 2 
+[2020-07-03 23:29:37] [FINE   ] Command BringToFront shape at index 4 
+[2020-07-03 23:29:43] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-03 23:29:47] [FINE   ] Command StepToBack shape at intex 5 
+[2020-07-03 23:29:49] [FINE   ] Command StepToBack shape at intex 4 
+[2020-07-03 23:30:14] [FINE   ] Application is closed. 

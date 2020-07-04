@@ -14,44 +14,52 @@ import javax.swing.JLabel;
 
 import java.awt.GridLayout;
 
-
+/* *
+ * * The DlgCircle class that extends JDialog
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class DlgCircle extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
 	private JTextField radius;
 	public Circle circle;
 	JButton btnSubmit;
+	JButton btnDismiss;
 
+	/**
+	 * Gets text field radius
+	 * @return text field radius
+	 */
 	public JTextField getRadius() {
 		return radius;
 	}
 
-	public void setRadius(JTextField radius) {
-		this.radius = radius;
-	}
-
+	/**
+	 * Sets circle
+	 * @param circle Circle
+	 */
 	public void setCircle(Circle circle) {
 		this.circle = circle;
 	}
 
-	public JButton getBtnSubmit() {
+	/**
+	 * Gets button btnSubmit
+	 * @return btnSubmit
+	 */
+	public JButton getBtnSubmit()
+	{
 		return btnSubmit;
 	}
 
+	/**
+	 * Gets button btnDismiss
+	 * @return btnDismiss
+	 */
 	public JButton getBtnDismiss() {
 		return btnDismiss;
-	}
-
-	JButton btnDismiss;
-
-	public static void main(String[] args) {
-		try {
-			DlgCircle dialog = new DlgCircle();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -95,6 +103,11 @@ public class DlgCircle extends JDialog {
 			}
 		}
 	}
+
+	/**
+	 * Gets circle object
+	 * @return circle
+	 */
 	public Circle getCircle(){
 		return circle; 
 	}

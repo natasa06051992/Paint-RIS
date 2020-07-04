@@ -12,10 +12,9 @@ import java.awt.Graphics;
 public abstract class SurfaceShape extends Shape{
 	private String colorInside;// = "bela";
 	private String colorEdge; //= "crna";
-	private static final long serialversionUID = 129543489838L;
 	private Color cEdge = Color.LIGHT_GRAY;
 	private Color cInside= Color.LIGHT_GRAY;
-
+	private static final long serialversionUID = 129543489838L;
 	/**
 	 * Fills rectangle
 	 * @param g

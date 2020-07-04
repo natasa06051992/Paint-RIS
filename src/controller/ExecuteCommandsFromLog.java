@@ -8,6 +8,7 @@ import model.Model;
 
 import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -33,6 +34,7 @@ public class ExecuteCommandsFromLog {
     public ExecuteCommandsFromLog(CommandManager manager, Model model) {
         this.manager=manager;
         this.model=model;
+        logList = new ArrayList<String>();
     }
 
     private static String line;
@@ -45,6 +47,7 @@ public class ExecuteCommandsFromLog {
 
         try{
             FileInputStream fstream = new FileInputStream(fileName);
+            boolean fileExists = new File(fileName).exists();
             BufferedReader br = new BufferedReader(new InputStreamReader(fstream));
 
             while ((line = br.readLine()) != null)   {

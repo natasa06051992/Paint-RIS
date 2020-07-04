@@ -1,0 +1,9 @@
+[2020-07-04 00:29:18] [FINE   ] Command Add Square 146 37 35 -4144960 -4144960 
+[2020-07-04 00:29:18] [FINE   ] Command Add Square 170 59 55 -4144960 -4144960 
+[2020-07-04 00:29:18] [FINE   ] Command Add Square 204 95 58 -13434676 -4144960 
+[2020-07-04 00:29:18] [FINE   ] Command BringToFront shape at index 4 
+[2020-07-04 00:29:18] [FINE   ] Command Modify Square 170 59 55 -4144960 -4144960 -> Square 170 59 55 -3355648 -4144960 
+[2020-07-04 00:29:18] [FINE   ] Command Modify Square 170 59 55 -3355648 -4144960 -> Square 170 59 55 -39322 -65332 
+[2020-07-04 00:29:18] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-04 00:29:18] [FINE   ] Command BringToFront shape at index 3 
+[2020-07-04 00:29:36] [FINE   ] Application is closed. 

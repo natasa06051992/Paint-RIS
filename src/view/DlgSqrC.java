@@ -15,7 +15,13 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import java.awt.GridLayout;
 import javax.swing.ButtonGroup;
-
+/* *
+ * * The DlgSqrC class that extends JDialog
+ * *
+ * * @author  Natasa Pajic
+ * * @version 1.0
+ * * @since   2020-06-28
+ * */
 public class DlgSqrC extends JDialog {
 
 	private final JPanel contentPanel = new JPanel();
@@ -25,50 +31,55 @@ public class DlgSqrC extends JDialog {
 	private Color colorInside = Color.WHITE;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	JButton btnDismiss;
+	JButton btnSubmit;
 
+	/**
+	 * Gets button btnSubmit
+	 * @return btnSubmit
+	 */
+	public JButton getBtnSubmit()
+	{
+		return btnSubmit;
+	}
+
+	/**
+	 * Gets button btnDismiss
+	 * @return btnDismiss
+	 */
 	public JButton getBtnDismiss() {
 		return btnDismiss;
 	}
 
-	public void setBtnDismiss(JButton btnDismiss) {
-		this.btnDismiss = btnDismiss;
-	}
-
-	public JButton getBtnSubmit() {
-		return btnSubmit;
-	}
-
-	public void setBtnSubmit(JButton btnSubmit) {
-		this.btnSubmit = btnSubmit;
-	}
-
-	JButton btnSubmit;
-
+	/**
+	 * Sets Square
+	 * @param square Square
+	 */
 	public void setSquare(Square square) {
 		this.square = square;
 	}
 
+	/**
+	 * Gets JTextField lengthOfSide
+	 * @return JTextField lengthOfSide
+	 */
 	public JTextField getLengthOfSide() {
 		return lengthOfSide;
 	}
 
+	/**
+	 * Gets edge color
+	 * @return edge inside
+	 */
 	public Color getColorEdge() {
 		return colorEdge;
 	}
 
+	/**
+	 * Gets inside color
+	 * @return color inside
+	 */
 	public Color getColorInside() {
 		return colorInside;
-	}
-
-
-	public static void main(String[] args) {
-		try {
-			DlgSqrC dialog = new DlgSqrC();
-			dialog.setDefaultCloseOperation(JDialog.DISPOSE_ON_CLOSE);
-			dialog.setVisible(true);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 
 	/**
@@ -115,6 +126,10 @@ public class DlgSqrC extends JDialog {
 		}
 	}
 
+	/**
+	 * Gets Square
+	 * @return Square
+	 */
 	public Square getSquare(){
 		return square;
 	}
